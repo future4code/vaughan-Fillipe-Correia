@@ -197,5 +197,13 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+    function converteData(data) {
+        let dataArray = data.split('/');
+        return dataArray[2] * 10000 + dataArray[1] * 100 + dataArray[0];
+    }
+    consultas.sort(function(a, b) {
+        return converteData(a.dataDaConsulta) - converteData(b.dataDaConsulta);
+    }
+    );
+    return consultas;
 }
