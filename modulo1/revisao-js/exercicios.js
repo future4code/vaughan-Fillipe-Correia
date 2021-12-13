@@ -99,7 +99,6 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 
 // EXERCÍCIO 08
-// Escreva uma função que, recebendo um número N como parâmetro, retorne os N primeiros números pares (2, 4, 6, 8, etc.)
 function retornaNPrimeirosPares(n) {
    evenNumbers = [];
     for (i = 0; i < n; i++) {
@@ -110,6 +109,13 @@ function retornaNPrimeirosPares(n) {
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
+    if (ladoA == ladoB && ladoA == ladoC) {
+        return "Equilátero";
+    } else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC) {
+        return "Isósceles";
+    } else {
+        return "Escaleno";
+    }
 
 }
 
