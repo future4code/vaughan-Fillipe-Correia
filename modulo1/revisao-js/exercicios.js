@@ -99,8 +99,13 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 
 // EXERCÍCIO 08
+// Escreva uma função que, recebendo um número N como parâmetro, retorne os N primeiros números pares (2, 4, 6, 8, etc.)
 function retornaNPrimeirosPares(n) {
-   
+   evenNumbers = [];
+    for (i = 0; i < n; i++) {
+        evenNumbers.push(i * 2);
+    }
+    return evenNumbers;
 }
 
 // EXERCÍCIO 09
