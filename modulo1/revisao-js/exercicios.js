@@ -25,9 +25,30 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-    
-  
+    novoArray = [];
+    for (i = 0; i < array.length; i++) {
+        for (j = 0; j < array.length; j++) {
+            if (array[i] < array[j]) {
+                aux = array[i];
+                array[i] = array[j];
+                array[j] = aux;
+            }
+        }
+    }
+    return array;
 }
+    // const newArray = array.slice();
+    // for (let i = 0; i < newArray.length; i++) {
+    //     for (let j = i + 1; j < newArray.length; j++) {
+    //         if (newArray[i] > newArray[j]) {
+    //             aux = newArray[i];
+    //             newArray[i] = newArray[j];
+    //             newArray[j] = aux;
+    //         }
+    //     }
+    // }
+    // return newArray;
+// }
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
