@@ -76,8 +76,27 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+    object = {};
+    if (num1 > num2) {
+        object.maiorNumero = num1;
+        object.diferenca = num1 - num2;
+        menorNumero = num2
+        object.maiorDivisivelPorMenor = num1 % num2 === 0;
+    } else if (num1 < num2) {
+        object.maiorNumero = num2;
+        object.diferenca = num2 - num1;
+        menorNumero = num1;
+        object.maiorDivisivelPorMenor = num2 % num1 === 0;
+    } else {
+        object.maiorNumero = num1;
+        object.diferenca = 0;
+        menorNumero = num1;
+        object.maiorDivisivelPorMenor = true;
+    }
+    
+    return object;
 }
+
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
