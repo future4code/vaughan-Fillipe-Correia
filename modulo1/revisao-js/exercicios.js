@@ -151,12 +151,24 @@ function retornaPessoaAnonimizada(pessoa) {
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
+    pessoasAutorizadas = [];
+    for (let pessoa of pessoas) {
+        if (pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60) {
+            pessoasAutorizadas.push(pessoa);
+        }
+    }
+    return pessoasAutorizadas;
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    pessoasNaoAutorizadas = [];
+    for (let pessoa of pessoas) {
+        if (pessoa.altura < 1.5 || pessoa.idade <= 14 || pessoa.idade > 60) {
+            pessoasNaoAutorizadas.push(pessoa);
+        }
+    }
+    return pessoasNaoAutorizadas;
 }
 
 // EXERCÍCIO 14
