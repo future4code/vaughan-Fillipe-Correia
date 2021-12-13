@@ -37,22 +37,17 @@ function retornaArrayOrdenado(array) {
     }
     return array;
 }
-    // const newArray = array.slice();
-    // for (let i = 0; i < newArray.length; i++) {
-    //     for (let j = i + 1; j < newArray.length; j++) {
-    //         if (newArray[i] > newArray[j]) {
-    //             aux = newArray[i];
-    //             newArray[i] = newArray[j];
-    //             newArray[j] = aux;
-    //         }
-    //     }
-    // }
-    // return newArray;
-// }
+
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-  
+  noOddNumbers = [];
+    for (i = 0; i < array.length; i++) {
+        if (array[i] % 2 == 0) {
+            noOddNumbers.push(array[i]);
+        }
+    }
+    return noOddNumbers;
 }
 
 // EXERCÍCIO 05
