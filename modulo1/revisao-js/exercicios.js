@@ -173,7 +173,13 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    for (conta of contas) {
+        for (compra of conta.compras) {
+            conta.saldoTotal -= compra;
+            conta.compras = [];
+        }
+    }
+    return contas;
 }
 
 // EXERCÍCIO 15A
