@@ -121,7 +121,21 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+    function ordenaArray(array) {
+        for (i = 0; i < array.length; i++) {
+            for (j = 0; j < array.length; j++) {
+                if (array[i] < array[j]) {
+                    aux = array[i];
+                    array[i] = array[j];
+                    array[j] = aux;
+                }
+            }
+        }
+        return array;
+    }
+    array = ordenaArray(array);
+    return [array[array.length - 2], array[1]];
+    
 }
 
 // EXERCÍCIO 11
