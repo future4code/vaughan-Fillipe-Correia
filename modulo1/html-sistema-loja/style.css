@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #48b3ce;
+  text-align: center;
+  color: white;
+  padding: 10px;
+}
+
+section {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+}
+
+section a {
+  display: inline-block;
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+  border: #595a5a 1px solid;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+}
+
+section h2{
+    text-align: center;
+}
+
+section table{
+    margin: auto;
+    width: 80%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+section table th{
+    padding: 10px;
+    background-color: #48b3ce;
+    color: white;
+}
+
+section table td{
+    padding: 10px;
+}
+
+section table tr{
+    border-bottom: 1px solid #ddd;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Palatino';
+}
+
+.funcionarios{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Palatino';
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.container {
+  margin: auto;
+}
+
+.imagem-index {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  
+}
+
+.descricao {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  border: #595a5a 1px solid;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.redes {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+}
+
+.redes img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.formContainer {
+  max-width: 230px;
+  background-color: #48c5ce;
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+}
+
+.links a {
+  margin-top: 50px;
+  text-align: center;
+  background-color: #48c5ce;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 16px;
+  text-align: center;
+  text-justify: distribute;
+  letter-spacing: 1px;
+}
+
+.mb {
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 3px;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #333;
+}
+
+footer {
+  background-color: #595a5a;
+  padding: 40px;
+  text-align: center;
+}
