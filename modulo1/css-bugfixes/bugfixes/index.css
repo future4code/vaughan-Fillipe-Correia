@@ -120,6 +120,7 @@ div:last-child {
 table {
     width: 60%;
     font-family: "Roboto", sans-serif;
+    margin: 0 auto;
 }
 
 td button {
@@ -151,8 +152,8 @@ table img {
     border-bottom: 2px solid black
 }
 
-
 #back-button {
+    display: inline-block;
     background-color: white;
     width: 100px;
     height: 20px;
@@ -161,6 +162,11 @@ table img {
     font-size: 10px;
     color: black;
     font-family: "Roboto", sans-serif;
+    margin-top: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    
 }
 
 #back-button:hover {
