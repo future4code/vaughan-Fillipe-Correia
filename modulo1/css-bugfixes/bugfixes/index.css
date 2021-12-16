@@ -117,6 +117,10 @@ td button {
     color: black;
 }
 
+table td {
+    text-align: center;
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
