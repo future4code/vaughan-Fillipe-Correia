@@ -80,9 +80,15 @@ div img {
 }
 
 #container-para-comprar>p {
+    margin-bottom: 5px;
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+}
+
+#container-para-comprar a{
+    position: relative;
+    top: -15px;
 }
 
 
