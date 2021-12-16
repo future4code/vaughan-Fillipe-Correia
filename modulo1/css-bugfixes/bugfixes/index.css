@@ -142,6 +142,13 @@ table img {
     height: 100px;
 }
 
+.container-do-search input {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 2px solid black
+}
+
 
 #back-button {
     background-color: white;
