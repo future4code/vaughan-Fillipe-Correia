@@ -8,39 +8,20 @@
   <title>Portfolio</title>
 </head>
 <body>
-    <div class="space">
+    <div id="space">
         <img src="assets/space.jpg" alt="astronauta">
         <br><br>
         <h2>Bem vindo ao meu portfólio, vamos decolar!</h2>
     </div>
-<!-- No projeto de hoje vocês deverão criar uma página pessoal no estilo portfólio. O intuito da página é mostrar para o seu visitante quais experiências prévias você teve, e ser um espaço onde pessoas podem te encontrar. Nesse projeto é essencial mostrar as habilidades que você adquiriu de HTML e CSS.
 
-A sua página deve conter os seguintes conteúdos:
-
-- Um texto descrevendo quem é você. Uma foto sua é **opcional**.
-- Uma lista de instituições de ensino e empregadores prévios. Fica a critério do aluno quais instituições incluir nessa lista, pedimos que inclua pelo menos a Labenu.
-- Uma galeria de projetos de software que você trabalhou. Deve haver uma maneira de interagir com essa galeria de projetos e abrir uma página que você deve criar para cada projeto.
-- Uma página para cada projeto que você colocou no item anterior. Essa página deve ter (pelo menos) uma imagem do projeto, um título, uma descrição e uma lista de tecnologias utilizadas. Por enquanto você pode utilizar os projetos do curso como exemplo.
-- Uma lista de habilidades que você possui (técnicas e comportamentais). Para cada habilidade, coloque um breve texto descrevendo um ponto forte seu que justifique o destaque.
-- Um formulário para contato. Ele deve receber nome, email e texto. Nessa etapa o formulário não precisa mandar email ou interagir com o usuário.
-- Uma lista de redes sociais e links seus para contato. Sugerimos linkedin, github, email, twitter, facebook, etc ...
-- Um menu na parte superior da tela com links para as demais áreas do portfólio.
-
-Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e interessante:
-
-- Use sua criatividade e os conhecimentos que você adquiriu essa semana. Lembre que seu portfólio deve se destacar pelo visual e pelo código.
-- Pense na disposição dos elementos antes de programar a página. Faça um diagrama visual de como você gostaria que o seu site ficasse, pode ser até com papel e caneta.
-- Sua página pode expressar a sua identidade pessoal. Escolha fontes, cores e ícones que combinem com você. Lembre de manter o profissionalismo. -->
-
-    <div class="container">
         <header id="header">
-            <nav class="container">
+            <nav>
             <ul class="grid">
-                <li><a class="title" href="#about-me">Sobre mim</a></li>
-                <li><a class="title" href="#academic-experience">Instituições de Ensino</a></li>
-                <li><a class="title" href="#work-experience">Empregos Anteriores</a></li>
-                <li><a class="title" href="#projects">Projetos</a></li>
-                <li><a class="title" href="#hard-skills">Habilidades</a></li>
+                <li><a class="title" href="#scroll-to-about-me">Sobre mim</a></li>
+                <li><a class="title" href="#scroll-to-academic-experience">Instituições de Ensino</a></li>
+                <li><a class="title" href="#scroll-to-work-experience">Empregos Anteriores</a></li>
+                <li><a class="title" href="#scroll-to-projects">Projetos</a></li>
+                <li><a class="title" href="#scroll-to-hard-skills">Habilidades</a></li>
                 <li><a class="title" href="#contact">Contato</a></li>
                 <li><a class="title" href="#social-media">Redes Sociais</a></li>
               </ul>
@@ -48,7 +29,9 @@ Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e i
             <div class="toggle icon-close"></div>
         </nav>
         </header>
-        </div>
+
+        <div id="scroll-to-about-me"></div>
+        
         <div class="divider">
         <div id="about-me">
             <h2>Sobre mim</h2>
@@ -61,6 +44,10 @@ Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e i
             </p>
         </div>
         </div>
+
+        <div id="scroll-to-academic-experience"></div>
+        <br>
+
         <div class="divider">
         <div id="academic-experience">
             <h2>Instituições de Ensino</h2>
@@ -73,6 +60,7 @@ Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e i
                 O curso de Full Stack Developer é um dos cursos mais completos da Labenu.
                 </p>
                 <li>
+                <br><br>
                 <h3>Senac</h3>
                 <p>O Serviço Nacional de Aprendizagem Comercial é uma instituição brasileira de educação profissional aberta a toda a sociedade. O curso de Sistemas para Internet prepara profissionais para o mercado de trabalho com foco em desenvolvimento web.
                 </p>
@@ -81,6 +69,10 @@ Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e i
             </ul>
         </div>
     </div>
+    
+    <div id="scroll-to-work-experience"></div>
+        <br>
+
     <div class="divider">
         <div id="work-experience">
             <h2>Empregos Anteriores</h2>
@@ -102,6 +94,10 @@ Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e i
             </ul>
         </div>
     </div>
+
+<div id="scroll-to-projects"></div>
+<br>
+
     <div class="divider">
         <div id="projects">
             <h2>Projetos</h2>
@@ -124,6 +120,10 @@ Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e i
             </ul>
         </div>
     </div>
+
+<div id="scroll-to-hard-skills"></div>
+<br>
+
     <div class="divider">
         <div id="hard-skills">
             <h2>Habilidades</h2>
@@ -167,62 +167,70 @@ Algumas instruções e dicas de como tornar o projeto de hoje mais produtivo e i
             </ul>
         </div>
     </div>
-    <div class="divider">
-        <div id="contact">
-            <h2>Contato</h2>
-            <p>Entre em contato comigo!</p>
-            <ul>
-            <form action="">
-                <label for="name">Nome</label>
-                <input type="text" name="name" id="name">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
-                <label for="message">Mensagem</label>
-                <textarea name="message" id="message" cols="30" rows="5"></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-            </ul>
-        </div>
-        </div>
-        <div class="divider">
-        <div id="social-media">
-            <h2>Redes Sociais</h2>
-            <ul>
-            <li>
-                <a href="https://www.linkedin.com/in/fillipe-correia/">
-                <img src="assets/linkedin.png" width="50px" alt="linkedin">
-                </a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/fillipelgpd/">
-                <img src="assets/instagram.png" width="50px" alt="instagram">
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/FillipeCO">
-                <img src="assets/github.png" width="50px" alt="github">
-                </a>
-            </li>
-            </ul>
-            
-            
-        </div>
-    </div>
 
-    <footer class="divider">
-       
-          <div class="rights">
-            <p> ©2021 Fillipe Correia.</p>
-            <p>Todos os direitos reservados. OU NÃO, pode usar copiar e me adicionar nas redes!</p>
-    </div>
-          
+    
+    <div class="moon">
+          <div id="scroll-to-contact"></div>
+          <br>
+          <div class="divider">
+              <div id="contact">
+                  <h2>Contato</h2>
+                  <p>Entre em contato comigo!</p>
+                  <ul>
+                  <form action="">
+                      <label for="name">Nome</label>
+                      <input type="text" name="name" id="name">
+                      <label for="email">Email</label>
+                      <input type="email" name="email" id="email">
+                      <label for="message">Mensagem</label>
+                      <textarea name="message" id="message" cols="30" rows="5"></textarea>
+                      <button type="submit">Enviar</button>
+                  </form>
+                  </ul>
+              </div>
+              </div>
+              <div class="divider">
+              <div id="social-media">
+                  <h2>Redes Sociais</h2>
+                  <ul>
+                  <li>
+                      <a href="https://www.linkedin.com/in/fillipe-correia/">
+                      <img src="assets/linkedin.png" width="50px" alt="linkedin">
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://www.instagram.com/fillipelgpd/">
+                      <img src="assets/instagram.png" width="50px" alt="instagram">
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://github.com/FillipeCO">
+                      <img src="assets/github.png" width="50px" alt="github">
+                      </a>
+                  </li>
+                  </ul>
+                  
+                  
+              </div>
+          </div>
+      
+          <footer>
+             
+                <div class="rights">
+                  <p> ©2021 Fillipe Correia.</p>
+                  <p>Todos os direitos reservados. OU NÃO, pode usar, copiar e me adicionar nas redes!</p>
+          </div>
+                
+            </footer>
 
-          <a href="#about-me" id="rocket"><img src="assets/rocket.png" width="50px" alt="rocket icon"></a>
-          
+
+
         
-      </footer>
-
-      <script src="https://unpkg.com/scrollreveal"></script>
-      <script src="script.js"></script>
+        </div>
+        
+        <a href="#space" id="rocket"><img src="assets/rocket.png" width="50px" alt="rocket icon"></a>
+  
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="script.js"></script>
   </body>
 </html>
