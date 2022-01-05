@@ -1,40 +1,37 @@
 * {
   margin: 0;
   padding: 0;
-  max-height: 200vh;
+  box-sizing: border-box;
 }
 
 html,
 body {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: orange;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+html{
+  height: 100%;
 }
 
 body {
-  display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
+  position: relative;
+  display: flex;
+  /* grid-template-rows: 1fr 5fr 1fr; */
+  flex-direction: column;
+  min-height: 100%;
 }
 
-.container {
+header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background: rgb(226, 105, 5); */
+  background: orange;
   padding: 20px;
-  border-radius: 10px;
-  gap: 50px;
 }
 
 .icone-nome {
@@ -60,15 +57,6 @@ body {
   transition: 0.3s;
 }
 
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgb(226, 105, 5);
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
 .player {
   margin-top: 50px;
   display: flex;
@@ -77,13 +65,14 @@ footer {
   gap: 20px;
 }
 
-header input {
-  margin-right: 20px;
+.barra-pesquisa {
+  padding-right: 0px;
+
 }
 
 .videos {
   padding: 20px;
-  margin-right: 0px;
+  /* margin-right: 0px; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   align-items: center;
@@ -101,3 +90,92 @@ header input {
   text-decoration: none;
   color: black;
 }
+
+.descricao-video{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: rgb(226, 105, 5);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 20px;
+  margin: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(226, 105, 5);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+
+  header {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: orange;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  html{
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+  }
+
+  .barra-pesquisa {
+    padding-right: 0px;
+  }
+
+  .videos {
+    padding: 20px;
+    margin-right: 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+  }
+
+  .player video{
+    width: 80%;
+  }
+
+  footer{
+  background: rgb(226, 105, 5);
+  width: 100%;
+  height: 100px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  
+  }
+
+}
+  
+
