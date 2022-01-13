@@ -10,6 +10,10 @@ import { SecaoComentario } from "../SecaoComentario/SecaoComentario";
 import iconeBookmarkBranco from "../../img/bookmarkbranco.svg";
 import iconeBookmarkPreto from "../../img/bookmarkpreto.svg";
 import { Bookmark } from "../Bookmark/Bookmark";
+import { Share } from "../Share/Share";
+import iconeShare from "../../img/share.svg";
+import { SecaoShare } from "../SecaoShare/SecaoShare";
+// import { Comentario } from "../Comentario/Comentario";
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -43,13 +47,21 @@ const PostPhoto = styled.img`
   width: 100%;
 `;
 
+const PostComent = styled.div`
+  display: flex;
+  font-size: 16px;
+  margin-left: 10px;
+`;
+
 class Post extends React.Component {
   state = {
     curtido: false,
     marcado: false,
-    numeroCurtidas: 5,
+    numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
+    compartilhado: false,
+    comentarioPostado: false,
   };
 
   onClickCurtida = () => {
@@ -74,10 +86,17 @@ class Post extends React.Component {
     });
   };
 
+  onClickShare = () => {
+    this.setState({
+      compartilhado: !this.state.compartilhado,
+    });
+  };
+
   aoEnviarComentario = () => {
     this.setState({
       comentando: false,
       numeroComentarios: this.state.numeroComentarios + 1,
+      comentarioPostado: true,
     });
   };
 
@@ -106,6 +125,11 @@ class Post extends React.Component {
       );
     }
 
+    let componenteShare;
+    if (this.state.compartilhado) {
+      componenteShare = <SecaoShare />;
+    }
+
     return (
       <PostContainer>
         <PostHeader>
@@ -114,6 +138,10 @@ class Post extends React.Component {
         </PostHeader>
 
         <PostPhoto src={this.props.fotoPost} alt={"Imagem do post"} />
+
+        <PostComent alt={"Comentário do usuário"}>
+          <p>{this.props.comentario}</p>
+        </PostComent>
 
         <PostFooter>
           <IconeComContador
@@ -128,13 +156,13 @@ class Post extends React.Component {
             valorContador={this.state.numeroComentarios}
           />
 
-          <Bookmark
-            icone={iconeBookmark}
-            onClickBook={this.onClickBookmark}
-            
-          />
+          <Share icone={iconeShare} onClickShare={this.onClickShare} />
+
+          <Bookmark icone={iconeBookmark} onClickBook={this.onClickBookmark} />
         </PostFooter>
         {componenteComentario}
+        {componenteShare}
+        {/* {componenteComentarios} */}
       </PostContainer>
     );
   }
