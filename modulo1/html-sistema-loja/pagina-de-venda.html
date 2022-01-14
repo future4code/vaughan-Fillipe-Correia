@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+  <title>Tralhas - vendas</title>
+</head>
+<body>
+    <header>
+        <div>
+        <h1 class="title">Tralhas Raras</h1>
+        </div>
+    </header>
+    <section>
+        <div>
+        <a href="index.html">Página Inicial</a>
+        <a href="ctrl-estoque.html">Controle de Estoque</a>
+        <a href="add-produto.html">Adicionar Produto</a>
+        <a href="funcionarios.html">Funcionários</a>
+        <a href="pagina-de-venda.html">Página de Venda</a>
+        <a href="historico-vendas.html">Histórico de Vendas</a>
+        </div>
+    </section>
+    <section>
+        <h1>Vendas</h1>
+        
+        <form action="pagina-de-venda.html" method="post">
+            <label for="produto">Produto:</label>
+            <select name="produto" id="produto">
+                <option value="">Selecione</option>
+                <option value="1">Katana 100% real usada em Kill Bill </option>
+                <option value="2">Guitarra Edição Especial Johnny Silverhand </option>
+                <option value="3">Unicórnio </option>
+                <option value="4">Água sagrada do himalaia </option>
+                <option value="5">Cartão com 100 pontos de crédito social </option>
+            </select>
+            <label for="pagamento">Pagamento:</label>
+            <select name="pagamento" id="pagamento">
+                <option value="">Selecione</option>
+                <option value="1">Dinheiro</option>
+                <option value="2">Cartão</option>
+            </select>
+            <input type="submit" value="Enviar">
+  </body>
+</html>
