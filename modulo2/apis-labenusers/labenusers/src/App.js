@@ -3,8 +3,10 @@ import React from 'react';
 import axios from 'axios';
 
 
+
 export default class App extends React.Component {
   state={
+    userListPage: false,
     userList:[],
     inputValueName:"",
     inputValueEmail:""
@@ -27,6 +29,19 @@ export default class App extends React.Component {
     })
   }
 
+  returnToRegister = () => {
+
+    this.setState({
+      userListPage: false
+    })
+  }
+
+  goToUserListPage = () => {
+    this.setState({
+      userListPage: true
+    })
+  }
+
 
   getUserList = () => {
     axios
@@ -35,12 +50,26 @@ export default class App extends React.Component {
         { headers: { Authorization: "fillipe-correia-vaughan" } }
       )
       .then((response) => {
-        console.log("THEN", response.data.result.list);
+        console.log(response.data);
+        console.log(this.state.userList);
+        this.setState({
+          userList: response.data
+        });
+        // this.setState({
+        //   userListPage: true
+        // });
+        // alert("Usuários carregados com sucesso!");
       })
       .catch((error) => {
+        console.log(error.response.data);
         alert("Erro ao carregar a lista de usuários");
       });
   };
+
+  wrapperFunction = () => {
+    this.getUserList();
+    this.goToUserListPage();
+}
   
   createUser = () => {
     const body = {
@@ -62,6 +91,32 @@ export default class App extends React.Component {
         alert("Usuário criado com sucesso!")
         this.setState({inputValueName:""})
         this.setState({inputValueEmail:""})
+        // this.getUserList();
+      })
+      .catch((error) => {
+        if (
+          error.response.data ===
+          'Verifique se você está passando o header "Authorization"'
+        ) {
+          alert("Desculpe, temos um erro interno, tente acessar o app mais tarde.")
+        }
+      });
+  };
+
+  deleteUser = (id) => {
+    const axiosConfig = {
+      headers: {
+        Authorization: "fillipe-correia-vaughan",
+      },
+    };
+    axios
+      .delete(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
+        axiosConfig
+      )
+      .then((response) => {
+        console.log("THEN", response.data);
+        alert("Usuário deletado com sucesso!")
         this.getUserList();
       })
       .catch((error) => {
@@ -79,17 +134,25 @@ export default class App extends React.Component {
       return(
         <div>
          
-          <p>{userlist.name}</p>
+          <ul>
+            <li>Nome: {userlist.name}</li>
+            <li>ID: {userlist.id}</li>
+            <li>Deletar <button onClick={this.deleteUser.bind(this, userlist.id)}>X</button></li>
+            
+          </ul>
+          <button onClick={this.returnToRegister}>Voltar</button>
         </div>
       )
     })
     console.log("estado", this.state)
+
+    
     return (
       <div className="App">
          <input
          placeholder="Nome do usuário"
          value={this.state.inputValueNome}
-         onChange={this.handleInputNome}
+         onChange={this.handleInputName}
          />
          
           <input
@@ -98,7 +161,13 @@ export default class App extends React.Component {
           onChange={this.handleInputEmail}
           />
           <button onClick={this.createUser}>Criar usuário</button>
-      {this.state.userList.length>0? (userlistList): <p>Cadastro de usuários</p>}
+          <button onClick={this.wrapperFunction}>Listar usuários</button>
+
+      {this.state.userListPage === true? (userlistList): <h2>Cadastro de usuários</h2>}
+      
+
+
+
       </div>
     );
   }
