@@ -11,6 +11,7 @@ export default class App extends React.Component {
     inputValueName:"",
     inputValueEmail:""
   }
+  
 
 
   componentDidMount = () => {
@@ -104,6 +105,8 @@ export default class App extends React.Component {
   };
 
   deleteUser = (id) => {
+    var confirmDelete = window.confirm("Deseja realmente deletar o usuário?");
+    if (confirmDelete) {
     const axiosConfig = {
       headers: {
         Authorization: "fillipe-correia-vaughan",
@@ -128,27 +131,39 @@ export default class App extends React.Component {
         }
       });
   };
+  };
 
   render(){
-    const userlistList= this.state.userList.map((userlist)=>{
+    const userlistList = this.state.userList.map((userlist)=>{
       return(
-        <div>
+        <div className='Lista'>
          
           <ul>
             <li>Nome: {userlist.name}</li>
             <li>ID: {userlist.id}</li>
-            <li>Deletar <button onClick={this.deleteUser.bind(this, userlist.id)}>X</button></li>
+            <li>Deletar: <button onClick={this.deleteUser.bind(this, userlist.id)}>X</button></li>
             
           </ul>
-          <button onClick={this.returnToRegister}>Voltar</button>
+      
         </div>
       )
-    })
+    }
+    )
+
+    const userListWrapper = (
+      <div>
+      <div>{userlistList}</div>
+      <div>
+      <button className='button-back' onClick={this.returnToRegister}><span>⬅️</span> Voltar</button>
+      </div>
+      </div>
+    )
+
     console.log("estado", this.state)
 
-    
-    return (
+    const cadastro = (
       <div className="App">
+        <h1>Cadastro de Usuários</h1>
          <input
          placeholder="Nome do usuário"
          value={this.state.inputValueNome}
@@ -162,11 +177,14 @@ export default class App extends React.Component {
           />
           <button onClick={this.createUser}>Criar usuário</button>
           <button onClick={this.wrapperFunction}>Listar usuários</button>
+      </div>
+    );
 
-      {this.state.userListPage === true? (userlistList): <h2>Cadastro de usuários</h2>}
-      
-
-
+    
+    return (
+      <div className='button-back'>
+        
+         {this.state.userListPage === true? (userListWrapper): (cadastro) }
 
       </div>
     );
