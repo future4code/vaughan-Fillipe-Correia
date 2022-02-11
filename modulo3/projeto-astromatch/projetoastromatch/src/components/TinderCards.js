@@ -7,28 +7,39 @@ import "./TinderCards.css";
 import SwipeButtons from './SwipeButtons';
 
 
+
 const TinderCards = () => {
     const [people, setPeople] = useState([]);
+    const [ID , setID] = useState("");
 
-// get people using axios 
+   
+
 useEffect(() => {
     axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person')
     .then(res => {
         setPeople([res.data.profile]);
-        console.log(res.data.profile);
-        console.log(people);
     })
     .catch(err => {
         console.log("Ocorreu um erro:", err);
     })
+    getId();
+    
 }, [])
+
+const getId = () => {
+    axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person')
+    .then(res => {
+        setID([res.data.profile.id]);
+    })
+    .catch(err => {
+        console.log("Ocorreu um erro:", err);
+    })
+};
 
 const getPeople = () => {
     axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person')
     .then(res => {
         setPeople([res.data.profile]);
-        console.log(res.data.profile);
-        console.log(people);
     })
     .catch(err => {
         console.log("Ocorreu um erro:", err);
@@ -38,25 +49,32 @@ const getPeople = () => {
 const onCardLeftScreen = () => {
     getPeople();
 
-    console.log("You swiped!");
+    console.log("You swiped to the next person!");
 };
 
-const cleanMatches = () => {
-    axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/clear')
+const swipeRight = () => {
+    console.log(people)
+    const body = {
+        id: ID[0],
+        choice: true
+    }
+    axios.post('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/choose-person', body)
     .then(res => {
-        console.log(res.data);
+        alert("You liked this person!");
     })
     .catch(err => {
         console.log("Ocorreu um erro:", err);
     })
 };
 
+// access the id of the person you liked
 
 
     return (
-        console.log(people),
+        // print the id of the person you liked
+        console.log(ID[0]),
+        <>
         <div className="tinderCards">
-            {/* <h1>Tinder cards</h1> */}
             {people.map((person) => (
                 <TinderCard className="swipe" key={person.name} preventSwipe={['up', 'down']} onCardLeftScreen={onCardLeftScreen}>
                     <div className="card" style={{ backgroundImage: `url(${person.photo})`}}>
@@ -65,9 +83,11 @@ const cleanMatches = () => {
                 </TinderCard>
                 
             ))}
-            
-
             </div>
+            <SwipeButtons swipeRight={swipeRight} people={people} />
+            </>
+            
+        
     )
 }
 
