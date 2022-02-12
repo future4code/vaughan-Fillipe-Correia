@@ -13,7 +13,7 @@
 .card > h3{
     position: absolute;
     bottom: 10px;
-    color: rgb(196, 196, 196);
+    color: linear-gradient(0deg, rgba(56,57,52,1) 0%, rgba(32,33,30,1) 21%, rgba(19,20,18,1) 35%, rgba(1,1,1,1) 85%);
 }
 
 .tinderCards{

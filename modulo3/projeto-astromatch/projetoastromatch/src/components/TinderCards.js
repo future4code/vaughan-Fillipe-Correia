@@ -1,94 +1,88 @@
-import React from 'react';
-import { useState } from 'react';
-import axios from 'axios';
-import { useEffect } from 'react';
-import TinderCard from 'react-tinder-card';
+import React from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+import TinderCard from "react-tinder-card";
 import "./TinderCards.css";
-import SwipeButtons from './SwipeButtons';
-
-
+import SwipeButtons from "./SwipeButtons";
 
 const TinderCards = () => {
-    const [people, setPeople] = useState([]);
-    const [ID , setID] = useState("");
+  const [people, setPeople] = useState([]);
+  const [ID, setID] = useState("");
 
-   
-
-useEffect(() => {
-    axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person')
-    .then(res => {
+  useEffect(() => {
+    axios
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person"
+      )
+      .then((res) => {
         setPeople([res.data.profile]);
-    })
-    .catch(err => {
-        console.log("Ocorreu um erro:", err);
-    })
-    getId();
-    
-}, [])
-
-const getId = () => {
-    axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person')
-    .then(res => {
         setID([res.data.profile.id]);
-    })
-    .catch(err => {
+      })
+      .catch((err) => {
         console.log("Ocorreu um erro:", err);
-    })
-};
+      });
+  }, []);
 
-const getPeople = () => {
-    axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person')
-    .then(res => {
+  const getPeople = () => {
+    axios
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/person"
+      )
+      .then((res) => {
         setPeople([res.data.profile]);
-    })
-    .catch(err => {
+      })
+      .catch((err) => {
         console.log("Ocorreu um erro:", err);
-    })
-};
+      });
+  };
 
-const onCardLeftScreen = () => {
+  const onCardLeftScreen = () => {
     getPeople();
+  };
 
-    console.log("You swiped to the next person!");
-};
-
-const swipeRight = () => {
-    console.log(people)
+  const swipeRight = () => {
     const body = {
-        id: ID[0],
-        choice: true
-    }
-    axios.post('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/choose-person', body)
-    .then(res => {
+      id: ID[0],
+      choice: true,
+    };
+    axios
+      .post(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/choose-person",
+        body
+      )
+      .then((res) => {
         alert("You liked this person!");
-    })
-    .catch(err => {
+      })
+      .catch((err) => {
         console.log("Ocorreu um erro:", err);
-    })
-};
+      });
+      getPeople();
+  };
 
-// access the id of the person you liked
-
-
-    return (
-        // print the id of the person you liked
-        console.log(ID[0]),
-        <>
-        <div className="tinderCards">
-            {people.map((person) => (
-                <TinderCard className="swipe" key={person.name} preventSwipe={['up', 'down']} onCardLeftScreen={onCardLeftScreen}>
-                    <div className="card" style={{ backgroundImage: `url(${person.photo})`}}>
-                        <h3>{person.name}</h3>
-                        </div>
-                </TinderCard>
-                
-            ))}
+  return (
+    <>
+    <h3>Arraste para esquerda ou direita para ver o próximo candidato ao match!</h3>
+      <div className="tinderCards">
+        {people.map((person) => (
+          <TinderCard
+            className="swipe"
+            key={person.name}
+            preventSwipe={["up", "down"]}
+            onCardLeftScreen={onCardLeftScreen}
+          >
+            <div
+              className="card"
+              style={{ backgroundImage: `url(${person.photo})` }}
+            >
+              <h3>{person.name}</h3>
             </div>
-            <SwipeButtons swipeRight={swipeRight} people={people} />
-            </>
-            
-        
-    )
-}
+          </TinderCard>
+        ))}
+      </div>
+      <SwipeButtons swipeRight={swipeRight} people={people} />
+    </>
+  );
+};
 
 export default TinderCards;

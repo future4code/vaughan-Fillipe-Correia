@@ -7,27 +7,20 @@ import Profile from "./components/Profile";
 import Chat from "./components/Chat";
 
 const App = () => {
-
-
   return (
     <div className="App">
       <Router>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/chat" element={<Chat />} />
 
           <Route path="/profile" element={<Profile />} />
-           
-          <Route path="/" element={<TinderCards />}>
 
-          </Route>
-          
-           
+          <Route path="/" element={<TinderCards />}></Route>
         </Routes>
       </Router>
-      
     </div>
   );
-}
+};
 
 export default App;
