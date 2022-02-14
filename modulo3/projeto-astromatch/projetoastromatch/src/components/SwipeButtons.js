@@ -17,7 +17,6 @@ const SwipeButtons = (props) => {
           "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:Fillipe/clear"
         )
         .then((res) => {
-          console.log(res.data);
           alert("Matches cleared!");
         })
         .catch((err) => {
@@ -28,7 +27,7 @@ const SwipeButtons = (props) => {
 
   return (
     <div className="swipeButtons">
-      <IconButton>
+      <IconButton onClick={props.getPeople}>
         <CloseIcon fontSize="large" />
       </IconButton>
       <IconButton onClick={clearMatches}>

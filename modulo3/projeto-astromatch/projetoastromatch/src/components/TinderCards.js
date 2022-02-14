@@ -62,7 +62,7 @@ const TinderCards = () => {
 
   return (
     <>
-    <h3>Arraste para esquerda ou direita para ver o próximo candidato ao match!</h3>
+    <h3>Swipe left or right to see the people in your area!</h3>
       <div className="tinderCards">
         {people.map((person) => (
           <TinderCard
@@ -78,9 +78,10 @@ const TinderCards = () => {
               <h3>{person.name}</h3>
             </div>
           </TinderCard>
+          
         ))}
       </div>
-      <SwipeButtons swipeRight={swipeRight} people={people} />
+      <SwipeButtons swipeRight={swipeRight} people={people} getPeople={getPeople} />
     </>
   );
 };

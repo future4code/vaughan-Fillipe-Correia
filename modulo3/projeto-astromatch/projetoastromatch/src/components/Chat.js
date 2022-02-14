@@ -25,7 +25,7 @@ const Chat = () => {
     <div className="chats">
       {messages.map((message) => (
         <div key={message.id} className="chat">
-          <Avatar key={message.id} alt="Remy Sharp" src={message.photo} />
+          <Avatar key={message.id} alt="person avatar" src={message.photo} />
 
           <p>{message.name}</p>
           <input type="text" placeholder="Type a message..." />
