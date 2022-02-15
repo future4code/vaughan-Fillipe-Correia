@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
     background-color: #f5f5f5;
-    padding: 20px;
+    margin: 0;
+    width: 100%;
     text-align: center;
     font-size: 1.5em;
     color: palevioletred;

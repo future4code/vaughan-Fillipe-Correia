@@ -9,6 +9,7 @@ import ApplyToTrip from "./components/ApplyToTrip";
 import CreateTripForm from "./components/CreateTripForm";
 import TripDetail from "./components/TripDetail";
 
+
 const App = () => {
   return (
     <div className="App">
