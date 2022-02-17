@@ -1,18 +1,12 @@
-import { BrowserRouter, Link, Router, Routes, Route } from "react-router-dom";
-import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import { FormControlLabel } from "@material-ui/core";
-import { Checkbox } from "@material-ui/core";
+
 import { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+
 
 const CardForm = styled.div`
   display: grid;
@@ -37,19 +31,7 @@ const CardForm = styled.div`
 const H2 = styled.h2`
   color: #7c66c5;
 `;
-const H4 = styled.h4`
-  color: #7c66c5;
-`;
 
-const InputData = styled.input`
-  background-color: white;
-  border: 1px solid #c4c4c4;
-  border-radius: 3px;
-  margin-bottom: 20px;
-  color: #7c66c5;
-  text-align: center;
-  padding: 3px;
-`;
 
 const ApplyToTrip = () => {
   const [trips, setTrips] = useState([]);
