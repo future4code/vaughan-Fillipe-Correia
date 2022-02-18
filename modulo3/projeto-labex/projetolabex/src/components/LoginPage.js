@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -15,6 +15,24 @@ const CardForm = styled.div`
   align-items: center;
   padding: 50px;
   text-align: center;
+`;
+
+const Title = styled.h1`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5em;
+  color: rgb(63, 81, 181);
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  gap: 20px;
 `;
 
 const LoginPage = () => {
@@ -49,7 +67,16 @@ const LoginPage = () => {
 
   return (
     <div className="loginpage">
-      <h1>Login</h1>
+      <Title>
+        <h1>Login</h1>
+      </Title>
+      <ButtonContainer>
+        <Link to="/">
+          <Button variant="contained" color="primary">
+            Voltar
+          </Button>
+        </Link>
+      </ButtonContainer>
       <CardForm>
         <TextField
           id="outlined-basic"
@@ -57,15 +84,25 @@ const LoginPage = () => {
           variant="outlined"
           value={email}
           onChange={handleEmailChange}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              login();
+            }
+          }}
         />
         <br />
 
         <TextField
           id="outlined-basic"
-          label="password"
+          label="Senha"
           variant="outlined"
           value={password}
           onChange={handlePasswordChange}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              login();
+            }
+          }}
         />
         <br />
 
@@ -76,9 +113,6 @@ const LoginPage = () => {
       </CardForm>
 
       <br />
-      <Link to="/">
-        <button>Voltar</button>
-      </Link>
     </div>
   );
 };

@@ -28,8 +28,10 @@ const TripCard = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 20px;
+  gap: 10px;
   justify-content: space-between;
   border-radius: 10px;
+  color: rgb(63, 81, 181);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   align-items: center;
   padding: 20px;
@@ -38,11 +40,36 @@ const TripCard = styled.div`
   &:hover {
     background-color: #f5f5f5;
   }
+
+  h4 {
+    max-width: 100px;
+
+`;
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  color: rgb(63, 81, 181);
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 600px) {
+    font-size: 0.8em;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-top: 20px;
   gap: 20px;
 `;
@@ -56,7 +83,6 @@ const AdminPage = () => {
   const [tripId, setTripId] = useState("");
   const classes = useStyles();
 
-
   useEffect(() => {
     getTrips();
   }, []);
@@ -68,7 +94,6 @@ const AdminPage = () => {
       )
       .then((response) => {
         setTrips(response.data.trips);
-
       })
       .catch((error) => {
         console.log(error);
@@ -78,7 +103,6 @@ const AdminPage = () => {
   const saveId = (id) => {
     localStorage.setItem("tripId", id);
   };
-
 
   const getTripDetails = (tripId) => {
     const token = localStorage.getItem("token");
@@ -91,9 +115,7 @@ const AdminPage = () => {
           },
         }
       )
-      .then((response) => {
-  
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -101,8 +123,11 @@ const AdminPage = () => {
 
   return (
     <div className="adminpage">
-      <h1>Admin Page</h1>
-        <ButtonContainer>
+      <Title>
+        <h1>Painel administrativo</h1>
+      </Title>
+
+      <ButtonContainer>
         <Link to="/createtripform">
           <Button variant="contained" color="primary">
             Criar viagem
@@ -121,16 +146,12 @@ const AdminPage = () => {
           <TripCard key={trip.id}>
             <h4>{trip.name}</h4>
 
+            <Link to={`/tripdetail/${trip.id}`}>
+              <Button variant="contained" color="primary">
+                Detalhes
+              </Button>
+            </Link>
 
-
-        <Link to={`/tripdetail/${trip.id}`}>
-          <Button variant="contained" color="primary">
-            Detalhes
-          </Button>
-        </Link>
-
-
-            
             <IconButton
               onClick={() => {
                 const token = localStorage.getItem("token");
@@ -155,9 +176,6 @@ const AdminPage = () => {
             >
               <DeleteForeverIcon />
             </IconButton>
-
-            
-            
           </TripCard>
         );
       })}

@@ -7,6 +7,16 @@ import Button from "@material-ui/core/Button";
 
 import { useState, useEffect } from "react";
 
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 100%;
+`;
+
 const CardForm = styled.div`
   display: grid;
   border: none;
@@ -15,6 +25,7 @@ const CardForm = styled.div`
   width: 480px;
   height: 600px;
   align-items: center;
+  margin-top: 50px;
   padding: 50px;
   text-align: center;
   background-color: white;
@@ -26,14 +37,14 @@ const CardForm = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 80%;
     height: 100%;
-    padding: 0;
+    padding: 10px;
   }
 `;
 
 const H2 = styled.h2`
-  color: CornflowerBlue;
+  color: rgb(63, 81, 181);
 `;
 
 const ApplyToTrip = () => {
@@ -62,7 +73,6 @@ const ApplyToTrip = () => {
   const handleTripChange = (event) => {
     setTrip(event.target.value);
     setTripID(event.target.value);
-    
   };
 
   const handleNameChange = (event) => {
@@ -108,11 +118,10 @@ const ApplyToTrip = () => {
   };
 
   return (
-    <div>
+    <PageContainer>
       <CardForm>
         <H2> Inscreva-se em uma viagem! </H2>
         {/* select trip */}
-
 
         <select onChange={handleTripChange}>
           <option value={""}>Nenhum</option>
@@ -178,7 +187,7 @@ const ApplyToTrip = () => {
           Enviar inscrição
         </Button>
       </CardForm>
-    </div>
+    </PageContainer>
   );
 };
 

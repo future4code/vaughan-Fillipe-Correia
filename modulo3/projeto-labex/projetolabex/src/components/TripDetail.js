@@ -10,7 +10,6 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -35,6 +34,7 @@ const DetailContainer = styled.div`
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  color: rgb(63, 81, 181);
 
   font-family: "Roboto", sans-serif;
 `;
@@ -49,33 +49,18 @@ const TripCard = styled.div`
     align-items: center;
     padding: 20px;
     text-align: center;
+    color: rgb(63, 81, 181);
+    background-color: #f5f5f5;
     
     span{
         font-weight: bold;
-        color: black;
+        color: rgb(63, 81, 181);
     }
     @media (max-width: 600px) {
     flex-direction: column;
 `;
 
-const ApprovedCard = styled.div`
-display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-  justify-content: space-between;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    background-image: url(https://cdn2.iconfinder.com/data/icons/free-version/128/helmet-256.png);
-    span{
-        font-weight: bold;
-        color: black;
-    }
-    @media (max-width: 600px) {
-    flex-direction: column;
-`;
+
 
 const CandidateCard = styled.div`
   display: flex;
@@ -93,8 +78,12 @@ const CandidateCard = styled.div`
         font-weight: bold;
         color: rgb(63, 81, 181);
     }
+    img{
+      height: 200px;
+    }
     @media (max-width: 600px) {
     flex-direction: column;
+    }
 `;
 
 const CardsGrid = styled.div`
@@ -187,77 +176,13 @@ const TripDetail = () => {
             <h2>Candidatos para aprovação</h2>
 
             <CardsGrid>
-            {candidates.map((candidate) => (
-              <CandidateCard key={candidate.name}>
-                <h3>
-                  <span>Nome: </span>
-                  {candidate.name}
-                </h3>
-                <img src="https://cdn0.iconfinder.com/data/icons/streamline-emoji-1/48/178-man-astronaut-2-256.png" />
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography className={classes.heading}>
-                      Detalhes
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography component={"span"} variant={"body2"}>
-                      <p>Nome: {candidate.name}</p>
-                      <p>Idade: {candidate.age}</p>
-                      <p>Profissão: {candidate.profession}</p>
-                      <p>Texto de inscrição: {candidate.applicationText}</p>
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-                <p></p>
-
-                <Button
-                  variant="contained"
-                  color="default"
-                  onClick={() => {
-                    const token = localStorage.getItem("token");
-                    const body = {
-                      approve: true,
-                    };
-                    axios
-                      .put(
-                        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/:Fillipe/trips/${id}/candidates/${candidate.id}/decide`,
-                        body,
-                        {
-                          headers: {
-                            auth: token,
-                          },
-                        }
-                      )
-                      .then((response) => {
-                        alert("Candidato aprovado com sucesso!");
-                        getTripDetails();
-                      })
-                      .catch((error) => {
-                        console.log(error);
-                      });
-                    {
-                    }
-                  }}
-                >
-                  Aprovar
-                </Button>
-              </CandidateCard>
-            ))}
-            </CardsGrid>
-            <h2>Candidatos aprovados</h2>
-            {aprovedCandidates.map((approvedcandidate) => (
-              <CandidateCard key={approvedcandidate.name}>
-                <h3>{approvedcandidate.name}</h3>
-                <img
-                  src="https://cdn0.iconfinder.com/data/icons/streamline-emoji-1/48/182-astronaut-2-256.png"
-                  alt="helmet"
-                />
-                <div>
+              {candidates.map((candidate) => (
+                <CandidateCard key={candidate.name}>
+                  <h3>
+                    <span>Nome: </span>
+                    {candidate.name}
+                  </h3>
+                  <img src="https://cdn0.iconfinder.com/data/icons/streamline-emoji-1/48/178-man-astronaut-2-256.png" />
                   <Accordion>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
@@ -270,19 +195,86 @@ const TripDetail = () => {
                     </AccordionSummary>
                     <AccordionDetails>
                       <Typography component={"span"} variant={"body2"}>
-                        <p>Nome: {approvedcandidate.name}</p>
-                        <p>Idade: {approvedcandidate.age}</p>
-                        <p>Profissão: {approvedcandidate.profession}</p>
-                        <p>
-                          Texto de inscrição:{" "}
-                          {approvedcandidate.applicationText}
-                        </p>
+                        <p>Nome: {candidate.name}</p>
+                        <p>Idade: {candidate.age}</p>
+                        <p>Profissão: {candidate.profession}</p>
+                        <p>Texto de inscrição: {candidate.applicationText}</p>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                </div>
-              </CandidateCard>
-            ))}
+                  <p></p>
+
+                  <Button
+                    variant="contained"
+                    color="default"
+                    onClick={() => {
+                      const token = localStorage.getItem("token");
+                      const body = {
+                        approve: true,
+                      };
+                      axios
+                        .put(
+                          `https://us-central1-labenu-apis.cloudfunctions.net/labeX/:Fillipe/trips/${id}/candidates/${candidate.id}/decide`,
+                          body,
+                          {
+                            headers: {
+                              auth: token,
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          alert("Candidato aprovado com sucesso!");
+                          getTripDetails();
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                      {
+                      }
+                    }}
+                  >
+                    Aprovar
+                  </Button>
+                </CandidateCard>
+              ))}
+            </CardsGrid>
+
+            <h2>Candidatos aprovados</h2>
+            <CardsGrid>
+              {aprovedCandidates.map((approvedcandidate) => (
+                <CandidateCard key={approvedcandidate.name}>
+                  <h3>{approvedcandidate.name}</h3>
+                  <img
+                    src="https://cdn0.iconfinder.com/data/icons/streamline-emoji-1/48/182-astronaut-2-256.png"
+                    alt="helmet"
+                  />
+                  <div>
+                    <Accordion>
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                      >
+                        <Typography className={classes.heading}>
+                          Detalhes
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <Typography component={"span"} variant={"body2"}>
+                          <p>Nome: {approvedcandidate.name}</p>
+                          <p>Idade: {approvedcandidate.age}</p>
+                          <p>Profissão: {approvedcandidate.profession}</p>
+                          <p>
+                            Texto de inscrição:{" "}
+                            {approvedcandidate.applicationText}
+                          </p>
+                        </Typography>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                </CandidateCard>
+              ))}
+            </CardsGrid>
           </TripCard>
         ))}
       </div>

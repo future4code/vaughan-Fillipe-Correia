@@ -6,7 +6,6 @@ import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { useState, useEffect } from "react";
 
-
 const CardForm = styled.div`
   display: grid;
   border: none;
@@ -43,11 +42,35 @@ const InputData = styled.input`
   text-align: center;
   padding: 3px;
 `;
+const Title = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  color: rgb(63, 81, 181);
+  margin-top: 20px;
+  margin-bottom: 20px;
 
+  @media (max-width: 600px) {
+    font-size: 0.8em;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  gap: 20px;
+`;
 
 const CreateTripForm = () => {
-  const [name , setName] = useState("");
-  const [planet , setPlanet] = useState("");
+  const [name, setName] = useState("");
+  const [planet, setPlanet] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [durationInDays, setDurationInDays] = useState("");
@@ -76,7 +99,7 @@ const CreateTripForm = () => {
     event.preventDefault();
     const headers = {
       "Content-Type": "application/json",
-      "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im93T2g5ZWo2bW50akZqNUNRMVB4IiwiZW1haWwiOiJhc3Ryb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE1ODk1NjI5MDh9.aB4dNbTCkToXB7pdzEa-tuMa-QbRQDUd93eva4-cec0",
+      auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im93T2g5ZWo2bW50akZqNUNRMVB4IiwiZW1haWwiOiJhc3Ryb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE1ODk1NjI5MDh9.aB4dNbTCkToXB7pdzEa-tuMa-QbRQDUd93eva4-cec0",
     };
     const application = {
       name,
@@ -88,7 +111,8 @@ const CreateTripForm = () => {
     axios
       .post(
         `https://us-central1-labenu-apis.cloudfunctions.net/labeX/:Fillipe/trips`,
-        application, { headers }
+        application,
+        { headers }
       )
       .then((response) => {
         console.log(response);
@@ -99,19 +123,27 @@ const CreateTripForm = () => {
       });
   };
 
-    return (
-        <div>
-      <h1>Create Trip Form</h1>
-      <Link to="/createtripform">
-        <button>Enviar</button>
-      </Link>
+  return (
+    <div>
+      <Title>
+        <h1>Criar viagem</h1>
+      </Title>
 
-      <Link to="/adminpage">
-        <button>Voltar</button>
-      </Link>
+      <ButtonContainer>
+        <Link to="/adminpage">
+          <Button variant="contained" color="primary">
+            Voltar
+          </Button>
+        </Link>
+        <Link to="/login">
+          <Button variant="contained" color="primary">
+            Log out
+          </Button>
+        </Link>
+      </ButtonContainer>
 
       <CardForm>
-      <TextField
+        <TextField
           id="outlined-basic"
           label="Nome da viagem"
           variant="outlined"
@@ -156,12 +188,9 @@ const CreateTripForm = () => {
           {" "}
           Criar Viagem
         </Button>
-
-        </CardForm>
-
-      
+      </CardForm>
     </div>
-    );
+  );
 };
 
 export default CreateTripForm;
