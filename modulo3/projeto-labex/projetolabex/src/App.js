@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import React from "react";
 import LoginPage from "./components/LoginPage";
 import TripList from "./components/TripList";
@@ -8,9 +8,18 @@ import AdminPage from "./components/AdminPage";
 import ApplyToTrip from "./components/ApplyToTrip";
 import CreateTripForm from "./components/CreateTripForm";
 import TripDetail from "./components/TripDetail";
+import ErrorPage from "./components/ErrorPage";
+
 
 
 const App = () => {
+
+  // const navigate = useNavigate();
+
+  // const goToTripDetailWithId = () => {
+  //   navigate.push("/tripdetail/id");
+  // };
+
   return (
     <div className="App">
       <Router>
@@ -28,7 +37,9 @@ const App = () => {
 
           <Route path="/createtripform" element={<CreateTripForm />} />
 
-          <Route path="/tripdetail" element={<TripDetail />} />
+          <Route path="/tripdetail/:id" element={<TripDetail />} />
+
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </div>

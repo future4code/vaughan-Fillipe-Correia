@@ -7,19 +7,23 @@ import Button from "@material-ui/core/Button";
 
 import { useState, useEffect } from "react";
 
-
 const CardForm = styled.div`
   display: grid;
   border: none;
   border-radius: 10px;
   box-shadow: 5px 3px 5px;
   width: 480px;
-  height: 500px;
+  height: 600px;
   align-items: center;
   padding: 50px;
   text-align: center;
   background-color: white;
   gap: 10px;
+
+  select {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
 
   @media (max-width: 768px) {
     width: 100%;
@@ -29,9 +33,8 @@ const CardForm = styled.div`
 `;
 
 const H2 = styled.h2`
-  color: #7c66c5;
+  color: CornflowerBlue;
 `;
-
 
 const ApplyToTrip = () => {
   const [trips, setTrips] = useState([]);
@@ -58,8 +61,8 @@ const ApplyToTrip = () => {
 
   const handleTripChange = (event) => {
     setTrip(event.target.value);
-    // set the tripID to the trip selected
     setTripID(event.target.value);
+    
   };
 
   const handleNameChange = (event) => {
@@ -93,11 +96,10 @@ const ApplyToTrip = () => {
     };
     axios
       .post(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/:Fillipe/trips/:${tripID}/apply`,
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/:Fillipe/trips/${tripID}/apply`,
         application
       )
       .then((response) => {
-        console.log(response);
         alert("Inscrição realizada com sucesso!");
       })
       .catch((error) => {
@@ -111,12 +113,12 @@ const ApplyToTrip = () => {
         <H2> Inscreva-se em uma viagem! </H2>
         {/* select trip */}
 
+
         <select onChange={handleTripChange}>
           <option value={""}>Nenhum</option>
-
           {trips.map((trip) => {
             return (
-              <option key={trip.name} value={trip.name}>
+              <option key={trip.name} value={trip.id}>
                 {trip.name}
               </option>
             );
@@ -125,7 +127,7 @@ const ApplyToTrip = () => {
 
         <TextField
           id="outlined-basic"
-          label="Name"
+          label="Nome"
           variant="outlined"
           value={name}
           onChange={handleNameChange}
@@ -134,7 +136,7 @@ const ApplyToTrip = () => {
 
         <TextField
           id="outlined-basic"
-          label="Age"
+          label="Idade"
           variant="outlined"
           value={age}
           onChange={handleAgeChange}
@@ -143,7 +145,7 @@ const ApplyToTrip = () => {
 
         <TextField
           id="outlined-basic"
-          label="Profession"
+          label="Profissão"
           variant="outlined"
           value={profession}
           onChange={handleProfessionChange}
@@ -166,7 +168,9 @@ const ApplyToTrip = () => {
         />
 
         <Link to="/triplist">
-          <button>Voltar</button>
+          <Button variant="outlined" color="primary">
+            Voltar
+          </Button>
         </Link>
 
         <Button onClick={submitApplication} variant="contained" color="primary">

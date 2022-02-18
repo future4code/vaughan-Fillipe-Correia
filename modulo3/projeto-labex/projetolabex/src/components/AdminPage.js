@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -36,11 +36,20 @@ const TripCard = styled.div`
   text-align: center;
 
   &:hover {
-    background-color: grey;
+    background-color: #f5f5f5;
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+`;
+
 const AdminPage = () => {
+  const pathParams = useParams();
+  const navigate = useNavigate();
   const [trips, setTrips] = useState([]);
   const [candidates, setCandidates] = useState([]);
   const [tripDetail, setTripDetail] = useState([]);
@@ -93,15 +102,18 @@ const AdminPage = () => {
   return (
     <div className="adminpage">
       <h1>Admin Page</h1>
-      <Link to="/">
-        <button>Voltar</button>
-      </Link>
-      <Link to="/createtripform">
-        <button>Criar viagem</button>
-      </Link>
-      <Link to="/login">
-        <button>Log out</button>
-      </Link>
+        <ButtonContainer>
+        <Link to="/createtripform">
+          <Button variant="contained" color="primary">
+            Criar viagem
+          </Button>
+        </Link>
+        <Link to="/login">
+          <Button variant="contained" color="primary">
+            Log out
+          </Button>
+        </Link>
+      </ButtonContainer>
 
       {trips.map((trip) => {
         const tripId = trip.id;
@@ -109,40 +121,16 @@ const AdminPage = () => {
           <TripCard key={trip.id}>
             <h4>{trip.name}</h4>
 
-{/* FUNÇÃO DE PEGAR OS DETALHES */}
-            <Button onClick={() => {
-                const token = localStorage.getItem("token");
-                axios
-                  .get(
-                    `https://us-central1-labenu-apis.cloudfunctions.net/labeX/:Fillipe/trip/${trip.id}`,
-                    {
-                      headers: {
-                        "Content-Type": "application/json",
-                        auth: token,
-                      },
-                    }
-                  )
-                  .then((response) => {
-                    console.log(response.data);
-                    setTripDetail([response.data.trip]);
-                    setCandidates(response.data.trip.candidates);
-                    setTripId(trip.id);
-                    console.log(tripId)
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-                  {}
-
-                  
-              }}> Detalhes
-              {/* <Link to="/tripdetail">
-                Detalhes
-              </Link> */}
-            </Button>
 
 
-            {/* ============================================================ */}
+        <Link to={`/tripdetail/${trip.id}`}>
+          <Button variant="contained" color="primary">
+            Detalhes
+          </Button>
+        </Link>
+
+
+            
             <IconButton
               onClick={() => {
                 const token = localStorage.getItem("token");
@@ -168,7 +156,7 @@ const AdminPage = () => {
               <DeleteForeverIcon />
             </IconButton>
 
-            {/* ============================================================ */}
+            
             
           </TripCard>
         );
