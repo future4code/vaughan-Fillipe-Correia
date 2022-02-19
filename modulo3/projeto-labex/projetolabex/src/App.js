@@ -14,12 +14,6 @@ import ErrorPage from "./components/ErrorPage";
 
 const App = () => {
 
-  // const navigate = useNavigate();
-
-  // const goToTripDetailWithId = () => {
-  //   navigate.push("/tripdetail/id");
-  // };
-
   return (
     <div className="App">
       <Router>

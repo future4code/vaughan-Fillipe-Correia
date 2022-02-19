@@ -7,22 +7,8 @@ import { useState, useEffect } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { makeStyles } from "@material-ui/core/styles";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import TripDetail from "./TripDetail";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-}));
+
 
 const TripCard = styled.div`
   display: flex;
@@ -81,9 +67,13 @@ const AdminPage = () => {
   const [candidates, setCandidates] = useState([]);
   const [tripDetail, setTripDetail] = useState([]);
   const [tripId, setTripId] = useState("");
-  const classes = useStyles();
+
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
     getTrips();
   }, []);
 
@@ -100,26 +90,11 @@ const AdminPage = () => {
       });
   };
 
-  const saveId = (id) => {
-    localStorage.setItem("tripId", id);
+  const logOut = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
-  const getTripDetails = (tripId) => {
-    const token = localStorage.getItem("token");
-    axios
-      .get(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/:Fillipe/trip/${tripId}`,
-        {
-          headers: {
-            auth: token,
-          },
-        }
-      )
-      .then((response) => {})
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   return (
     <div className="adminpage">
@@ -128,16 +103,22 @@ const AdminPage = () => {
       </Title>
 
       <ButtonContainer>
+      <Link to="/">
+          <Button variant="contained" color="primary">
+            Voltar para a home
+          </Button>
+        </Link>
+
         <Link to="/createtripform">
           <Button variant="contained" color="primary">
             Criar viagem
           </Button>
         </Link>
-        <Link to="/login">
-          <Button variant="contained" color="primary">
+        
+          <Button onClick={logOut} variant="contained" color="primary">
             Log out
           </Button>
-        </Link>
+        
       </ButtonContainer>
 
       {trips.map((trip) => {

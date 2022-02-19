@@ -111,6 +111,10 @@ const TripDetail = () => {
   const classes = useStyles();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
     getTripDetails();
   }, []);
 

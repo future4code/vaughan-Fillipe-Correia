@@ -111,6 +111,7 @@ const ApplyToTrip = () => {
       )
       .then((response) => {
         alert("Inscrição realizada com sucesso!");
+        window.location.href = "/triplist";
       })
       .catch((error) => {
         console.log(error);
@@ -174,6 +175,11 @@ const ApplyToTrip = () => {
           variant="outlined"
           value={country}
           onChange={handleCountryChange}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              submitApplication();
+            }
+          }}
         />
 
         <Link to="/triplist">

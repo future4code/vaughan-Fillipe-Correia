@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate  } from "react-router-dom";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { TextField } from "@material-ui/core";
@@ -38,6 +38,16 @@ const ButtonContainer = styled.div`
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/adminpage");
+    }
+  }, [navigate]);
+
+
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
