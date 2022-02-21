@@ -8,7 +8,14 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { makeStyles } from "@material-ui/core/styles";
 
-
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding: 20px;
+  margin: 20px;
+  `;
 
 const TripCard = styled.div`
   display: flex;
@@ -57,7 +64,10 @@ const ButtonContainer = styled.div`
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
   gap: 20px;
+
+  
 `;
 
 const AdminPage = () => {
@@ -97,7 +107,7 @@ const AdminPage = () => {
 
 
   return (
-    <div className="adminpage">
+    <PageContainer>
       <Title>
         <h1>Painel administrativo</h1>
       </Title>
@@ -108,7 +118,7 @@ const AdminPage = () => {
               backgroundColor: "black",
               color: "white",
             }}>
-            Voltar para a home
+            Inicio
           </Button>
         </Link>
 
@@ -172,7 +182,7 @@ const AdminPage = () => {
           </TripCard>
         );
       })}
-    </div>
+    </PageContainer>
   );
 };
 

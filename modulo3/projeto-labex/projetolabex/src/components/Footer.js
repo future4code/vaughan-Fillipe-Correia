@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
     padding-left: 20px;
     align-items: center;
     background-color: black;

@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   background-color: #f5f5f5;

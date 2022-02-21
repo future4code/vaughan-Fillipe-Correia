@@ -23,9 +23,10 @@ const CardForm = styled.div`
   border-radius: 10px;
   box-shadow: 5px 3px 5px;
   width: 480px;
-  height: 600px;
+  height: 700px;
   align-items: center;
   margin-top: 50px;
+  margin-bottom: 50px;
   padding: 50px;
   text-align: center;
   background-color: white;

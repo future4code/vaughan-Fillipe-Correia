@@ -24,6 +24,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 20px;
   gap: 20px;
 `;
 
@@ -35,6 +36,7 @@ const DetailContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   color: black;
+  padding: 20px;
 
   font-family: "Roboto", sans-serif;
 `;
@@ -43,6 +45,7 @@ const TripCard = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  gap: 10px;
   justify-content: space-between;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -66,8 +69,10 @@ const CandidateCard = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  margin-bottom: 20px;
   color: white;
   max-width: 300px;
+  gap: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     align-items: center;
@@ -182,6 +187,9 @@ const TripDetail = () => {
               <span>Duração: </span>
               {trip.durationInDays} dias
             </p>
+            <p></p>
+            <p></p>
+            <p></p>
 
             <h2>Candidatos para aprovação</h2>
 
