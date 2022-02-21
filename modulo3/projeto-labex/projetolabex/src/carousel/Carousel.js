@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const CarouselContainer = styled.div`
   width: 100%;
-  height: 500px;
+  height: 750px;
   background-color: black;
 
   h1 {
@@ -15,6 +15,7 @@ const CarouselContainer = styled.div`
   }
 
   p {
+    margin-top: -400px;
     font-size: 1rem;
   }
 
