@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+| # Projeto Labex                                       |
+| ----------------------------------------------------- |
+| ## link do surge: http://http://mighty-wood.surge.sh/ |
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+| ## Descrição:                                                |
+| ------------------------------------------------------------ |
+| Página demo de uma agência de viagens espaciais.             |
+| Funcionalidades: Parte pública: Visualizar todas as viagens e se inscrever em viagens. Parte privada: Logar, fazer logout, criar viagens, excluir viagens, ver detalhes das viagens e aprovar candidatos para as viagens. |
 
-## Available Scripts
+| ## O que foi usado:                                          |
+| ------------------------------------------------------------ |
+| Projeto feito em React JS com ReactRouter, Styled Components, Material Ui versão 4, Css, Javascript e Axios. |
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| ## Prints:                                                   |
+| ------------------------------------------------------------ |
+| ### Homepage: <br /> ![homepage](https://i.postimg.cc/HWqbBNgB/homelabex.png)<br /><br />### Lista de viagens:<br />![lista de viagens](https://i.postimg.cc/xCqL4D8F/labexlist.png)<br />### Página de inscrição:<br />![página de inscrição](https://i.postimg.cc/SKgWdNSM/labexapply.png)<br />### Página de login<br />![página de login](https://i.postimg.cc/TYbJx69z/labexlogin.png)<br />### Painel administrativo![painel administrativo](https://i.postimg.cc/52q5HSDp/labexadmin.png)<br />### Página de criação de viagens![página de criação de viagens](https://i.postimg.cc/hGDLV7Bn/createlabex.png)<br />### Página de detalhes da viagem![página de detalhes](https://i.postimg.cc/05MpGsLz/deatilslabex.png)<br /> |
