@@ -17,7 +17,7 @@ const TripCard = styled.div`
   gap: 10px;
   justify-content: space-between;
   border-radius: 10px;
-  color: rgb(63, 81, 181);
+  color: black;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   align-items: center;
   padding: 20px;
@@ -39,7 +39,7 @@ const Title = styled.div`
   align-items: center;
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
-  color: rgb(63, 81, 181);
+  color: black;
   margin-top: 20px;
   margin-bottom: 20px;
 
@@ -104,18 +104,27 @@ const AdminPage = () => {
 
       <ButtonContainer>
       <Link to="/">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Voltar para a home
           </Button>
         </Link>
 
         <Link to="/createtripform">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Criar viagem
           </Button>
         </Link>
         
-          <Button onClick={logOut} variant="contained" color="primary">
+          <Button onClick={logOut} variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Log out
           </Button>
         
@@ -128,7 +137,10 @@ const AdminPage = () => {
             <h4>{trip.name}</h4>
 
             <Link to={`/tripdetail/${trip.id}`}>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
                 Detalhes
               </Button>
             </Link>

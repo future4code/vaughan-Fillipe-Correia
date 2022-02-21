@@ -9,6 +9,8 @@ import ApplyToTrip from "./components/ApplyToTrip";
 import CreateTripForm from "./components/CreateTripForm";
 import TripDetail from "./components/TripDetail";
 import ErrorPage from "./components/ErrorPage";
+import './App.css';
+
 
 
 

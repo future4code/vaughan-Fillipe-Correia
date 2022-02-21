@@ -6,6 +6,16 @@ import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { useState, useEffect } from "react";
 
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 100%;
+`;
+
 const CardForm = styled.div`
   display: grid;
   border: none;
@@ -49,7 +59,7 @@ const Title = styled.div`
   align-items: center;
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
-  color: rgb(63, 81, 181);
+  color: black;
   margin-top: 20px;
   margin-bottom: 20px;
 
@@ -124,19 +134,25 @@ const CreateTripForm = () => {
   };
 
   return (
-    <div>
+    <PageContainer>
       <Title>
         <h1>Criar viagem</h1>
       </Title>
 
       <ButtonContainer>
         <Link to="/adminpage">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Voltar
           </Button>
         </Link>
         <Link to="/login">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Log out
           </Button>
         </Link>
@@ -184,12 +200,15 @@ const CreateTripForm = () => {
           value={durationInDays}
           onChange={handleDurationInDaysChange}
         />
-        <Button onClick={submitApplication} variant="contained" color="primary">
+        <Button onClick={submitApplication} variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
           {" "}
           Criar Viagem
         </Button>
       </CardForm>
-    </div>
+    </PageContainer>
   );
 };
 

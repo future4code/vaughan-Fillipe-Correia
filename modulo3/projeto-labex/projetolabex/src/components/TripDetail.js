@@ -34,7 +34,7 @@ const DetailContainer = styled.div`
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  color: rgb(63, 81, 181);
+  color: black;
 
   font-family: "Roboto", sans-serif;
 `;
@@ -49,12 +49,12 @@ const TripCard = styled.div`
     align-items: center;
     padding: 20px;
     text-align: center;
-    color: rgb(63, 81, 181);
+    color: black;
     background-color: #f5f5f5;
     
     span{
         font-weight: bold;
-        color: rgb(63, 81, 181);
+        color: black;
     }
     @media (max-width: 600px) {
     flex-direction: column;
@@ -76,7 +76,7 @@ const CandidateCard = styled.div`
     background-image: url(https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
     span{
         font-weight: bold;
-        color: rgb(63, 81, 181);
+        color: grey;
     }
     img{
       height: 200px;
@@ -145,13 +145,19 @@ const TripDetail = () => {
       <h1>Detalhes da viagem</h1>
       <ButtonContainer>
         <Link to="/adminpage">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Voltar
           </Button>
         </Link>
 
         <Link to="/adminpage">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Voltar
           </Button>
         </Link>

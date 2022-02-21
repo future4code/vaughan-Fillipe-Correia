@@ -5,16 +5,15 @@ import { Link } from 'react-router-dom';
 const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    padding-left: 20px;
     align-items: center;
-    background-color: #f5f5f5;
+    background-color: black;
     margin: 0;
     width: 100%;
+    height: 120px;
     text-align: center;
     font-size: 1.5em;
-    color: rgb(63, 81, 181);
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    color: white;
     font-family: 'Roboto', sans-serif;
     img{
         width: 50px;
@@ -23,13 +22,18 @@ const HeaderContainer = styled.div`
         margin-left: 10px;
     }
     span{
-        color: rgb(63, 81, 181);
+        color: white;
         font-family: 'Verdana', sans-serif;
     }
     a{
+        margin-left: -10px;
+        margin-top: 10px;
         text-decoration: none;
-        color: rgb(63, 81, 181)
+        color: white;
     }
+
+    @media (max-width: 600px) {
+        font-size: 0.8em;
     `;
 
 const Header = () => {
@@ -37,7 +41,7 @@ const Header = () => {
         <HeaderContainer>
             <img src={logo} alt="logo" />
             <Link color='rgb(63, 81, 181)' to="/">
-        <h1>Labe<span>X</span></h1>
+        <h1>abe<span>X</span></h1>
         </Link>
         </HeaderContainer>
     );

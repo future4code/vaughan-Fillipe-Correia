@@ -1,4 +1,4 @@
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -23,7 +23,7 @@ const Title = styled.h1`
   justify-content: center;
   font-family: "Roboto", sans-serif;
   font-size: 1.5em;
-  color: rgb(63, 81, 181);
+  color: black;
   margin-top: 20px;
   margin-bottom: 20px;
 `;
@@ -46,8 +46,6 @@ const LoginPage = () => {
       navigate("/adminpage");
     }
   }, [navigate]);
-
-
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -82,7 +80,13 @@ const LoginPage = () => {
       </Title>
       <ButtonContainer>
         <Link to="/">
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "black",
+              color: "white",
+            }}
+          >
             Voltar
           </Button>
         </Link>
@@ -116,7 +120,14 @@ const LoginPage = () => {
         />
         <br />
 
-        <Button onClick={login} variant="contained" color="primary">
+        <Button
+          onClick={login}
+          variant="contained"
+          style={{
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
           {" "}
           Fazer login
         </Button>

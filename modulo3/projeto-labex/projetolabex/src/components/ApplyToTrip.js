@@ -44,7 +44,7 @@ const CardForm = styled.div`
 `;
 
 const H2 = styled.h2`
-  color: rgb(63, 81, 181);
+  color: black;
 `;
 
 const ApplyToTrip = () => {
@@ -163,8 +163,9 @@ const ApplyToTrip = () => {
 
         <TextField
           id="outlined-basic"
-          label=" Texto de inscrição"
+          label="Fale sobre o porquê da sua inscrição"
           variant="outlined"
+          color="primary"
           value={applicationText}
           onChange={handleApplicationTextChange}
         />
@@ -183,12 +184,18 @@ const ApplyToTrip = () => {
         />
 
         <Link to="/triplist">
-          <Button variant="outlined" color="primary">
+          <Button variant="outlined" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Voltar
           </Button>
         </Link>
 
-        <Button onClick={submitApplication} variant="contained" color="primary">
+        <Button onClick={submitApplication} variant="contained" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
           {" "}
           Enviar inscrição
         </Button>

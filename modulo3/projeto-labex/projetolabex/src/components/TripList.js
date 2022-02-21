@@ -31,7 +31,7 @@ const TripCard = styled.div`
   padding: 20px;
   text-align: center;
   font-size: 1em;
-  color: rgb(63, 81, 181);
+  color: black;
   border: 1px solid #ddd;
   border-radius: 4px;
   max-width: 300px;
@@ -40,7 +40,7 @@ const TripCard = styled.div`
 
   span {
     font-weight: bold;
-    color: rgb(63, 81, 181);
+    color: black;
   }
 `;
 
@@ -83,13 +83,19 @@ const TripList = () => {
     <TripsContainer>
       <ButtonContainer>
         <Link to="/">
-          <Button variant="outlined" color="primary">
+          <Button variant="outlined" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Voltar
           </Button>
         </Link>
 
         <Link to="/applytotrip">
-          <Button variant="outlined" color="primary">
+          <Button variant="outlined" style={{
+              backgroundColor: "black",
+              color: "white",
+            }}>
             Inscrever-se
           </Button>
         </Link>
