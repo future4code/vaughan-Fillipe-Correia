@@ -11,7 +11,7 @@ export const images = [
   },
   {
     title: "Seja parte da nossa história!",
-    subtitle: "Crie sua conta e inscreva-se para participar!",
+    subtitle: "Realize a sua inscrição na lista de viagens!",
     img: Launch,
   },
 ];

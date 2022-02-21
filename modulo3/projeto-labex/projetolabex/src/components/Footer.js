@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import IconButton from "@material-ui/core/IconButton";
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import Twitter from "@material-ui/icons/Twitter";
 
 const FooterContainer = styled.div`
     display: flex;
@@ -25,16 +27,37 @@ const FooterContainer = styled.div`
         font-size: 0.8em;
     `;
 
+    const SocialMediaContainer = styled.div`
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        `;
+
+
 const Footer = () => {
   return (
     <FooterContainer>
-      <h2>Nos siga nas redes sociais:</h2>
-      <IconButton aria-label="facebook">
-        <FacebookIcon /> Facebook
+      <h3>Nos siga nas redes sociais:</h3>
+
+      <SocialMediaContainer>
+
+      <IconButton aria-label="facebook" onClick={() => window.open('https://www.facebook.com')}>
+        <FacebookIcon /> 
       </IconButton>
-      <IconButton aria-label="instagram">
-        <InstagramIcon /> Instagram
+
+      <IconButton aria-label="instagram" onClick={() => window.open('https://www.instagram.com')}>
+        <InstagramIcon /> 
       </IconButton>
+
+      <IconButton aria-label="youtube" onClick={() => window.open('https://www.youtube.com.com')}>
+        <YouTubeIcon /> 
+      </IconButton>
+
+      <IconButton aria-label="twitter" onClick={() => window.open('https://www.twitter.com')}>
+        <Twitter /> 
+      </IconButton>
+
+      </SocialMediaContainer>
     </FooterContainer>
   );
 };

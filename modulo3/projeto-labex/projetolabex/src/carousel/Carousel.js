@@ -23,7 +23,7 @@ const CarouselContainer = styled.div`
   p {
     text-align: center;
     background-color: rgb(255, 255, 255, 0.5);
-    padding: 20px;
+    padding: 10px;
     border-radius: 9px;
   }
 `;
