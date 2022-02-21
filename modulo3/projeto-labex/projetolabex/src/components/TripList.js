@@ -20,6 +20,10 @@ const TripsContainer = styled.div`
   padding: 20px;
   width: 100%;
   text-align: center;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const TripCard = styled.div`
@@ -83,19 +87,25 @@ const TripList = () => {
     <TripsContainer>
       <ButtonContainer>
         <Link to="/">
-          <Button variant="outlined" style={{
+          <Button
+            variant="outlined"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Voltar
           </Button>
         </Link>
 
         <Link to="/applytotrip">
-          <Button variant="outlined" style={{
+          <Button
+            variant="outlined"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Inscrever-se
           </Button>
         </Link>

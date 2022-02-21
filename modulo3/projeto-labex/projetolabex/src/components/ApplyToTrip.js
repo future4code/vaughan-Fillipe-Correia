@@ -34,7 +34,7 @@ const CardForm = styled.div`
 
   select {
     padding: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   @media (max-width: 768px) {

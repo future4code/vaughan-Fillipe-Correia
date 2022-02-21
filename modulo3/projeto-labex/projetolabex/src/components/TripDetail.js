@@ -63,8 +63,6 @@ const TripCard = styled.div`
     flex-direction: column;
 `;
 
-
-
 const CandidateCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,22 +71,22 @@ const CandidateCard = styled.div`
   color: white;
   max-width: 300px;
   gap: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    background-image: url(https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
-    span{
-        font-weight: bold;
-        color: grey;
-    }
-    img{
-      height: 200px;
-    }
-    @media (max-width: 600px) {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  background-image: url(https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+  span {
+    font-weight: bold;
+    color: grey;
+  }
+  img {
+    height: 200px;
+  }
+  @media (max-width: 600px) {
     flex-direction: column;
-    }
+  }
 `;
 
 const CardsGrid = styled.div`
@@ -150,19 +148,25 @@ const TripDetail = () => {
       <h1>Detalhes da viagem</h1>
       <ButtonContainer>
         <Link to="/adminpage">
-          <Button variant="contained" style={{
+          <Button
+            variant="contained"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Voltar
           </Button>
         </Link>
 
         <Link to="/adminpage">
-          <Button variant="contained" style={{
+          <Button
+            variant="contained"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Voltar
           </Button>
         </Link>

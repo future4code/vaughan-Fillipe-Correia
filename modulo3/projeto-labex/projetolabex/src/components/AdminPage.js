@@ -15,7 +15,7 @@ const PageContainer = styled.div`
   /* align-items: center; */
   padding: 20px;
   margin: 20px;
-  `;
+`;
 
 const TripCard = styled.div`
   display: flex;
@@ -66,8 +66,6 @@ const ButtonContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   gap: 20px;
-
-  
 `;
 
 const AdminPage = () => {
@@ -77,7 +75,6 @@ const AdminPage = () => {
   const [candidates, setCandidates] = useState([]);
   const [tripDetail, setTripDetail] = useState([]);
   const [tripId, setTripId] = useState("");
-
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -105,7 +102,6 @@ const AdminPage = () => {
     navigate("/login");
   };
 
-
   return (
     <PageContainer>
       <Title>
@@ -113,31 +109,40 @@ const AdminPage = () => {
       </Title>
 
       <ButtonContainer>
-      <Link to="/">
-          <Button variant="contained" style={{
+        <Link to="/">
+          <Button
+            variant="contained"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Inicio
           </Button>
         </Link>
 
         <Link to="/createtripform">
-          <Button variant="contained" style={{
+          <Button
+            variant="contained"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Criar viagem
           </Button>
         </Link>
-        
-          <Button onClick={logOut} variant="contained" style={{
-              backgroundColor: "black",
-              color: "white",
-            }}>
-            Log out
-          </Button>
-        
+
+        <Button
+          onClick={logOut}
+          variant="contained"
+          style={{
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
+          Log out
+        </Button>
       </ButtonContainer>
 
       {trips.map((trip) => {
@@ -147,10 +152,13 @@ const AdminPage = () => {
             <h4>{trip.name}</h4>
 
             <Link to={`/tripdetail/${trip.id}`}>
-              <Button variant="contained" style={{
-              backgroundColor: "black",
-              color: "white",
-            }}>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                }}
+              >
                 Detalhes
               </Button>
             </Link>

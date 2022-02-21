@@ -142,18 +142,24 @@ const CreateTripForm = () => {
 
       <ButtonContainer>
         <Link to="/adminpage">
-          <Button variant="contained" style={{
+          <Button
+            variant="contained"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Voltar
           </Button>
         </Link>
         <Link to="/login">
-          <Button variant="contained" style={{
+          <Button
+            variant="contained"
+            style={{
               backgroundColor: "black",
               color: "white",
-            }}>
+            }}
+          >
             Log out
           </Button>
         </Link>
@@ -201,10 +207,14 @@ const CreateTripForm = () => {
           value={durationInDays}
           onChange={handleDurationInDaysChange}
         />
-        <Button onClick={submitApplication} variant="contained" style={{
-              backgroundColor: "black",
-              color: "white",
-            }}>
+        <Button
+          onClick={submitApplication}
+          variant="contained"
+          style={{
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
           {" "}
           Criar Viagem
         </Button>
