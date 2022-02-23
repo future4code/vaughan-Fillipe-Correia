@@ -1,14 +1,55 @@
 import "./share.css";
 import {PermMedia, Label,Room, EmojiEmotions} from "@material-ui/icons"
+import { useState } from "react";
+import axios from "axios";
 
 export default function Share() {
+const [postText, setPostText] = useState("");
+const [postTitle, setPostTitle] = useState("");
+
+
+  const handleInputChange = (e) => {
+    setPostText(e.target.value);
+  };
+
+  const handleTitleChange = (e) => {
+    setPostTitle(e.target.value);
+  };
+
+  const submitPost = (e) => {
+    const token = localStorage.getItem("token");
+    const body = {
+      title: postTitle,
+      body: postText,
+    };
+    e.preventDefault();
+    
+    axios
+      .post("https://labeddit.herokuapp.com/posts", body, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        alert("Post created");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
           <img className="shareProfileImg" src="/assets/person/1.jpeg" alt="" />
-          <input
-            placeholder="What's in your mind Safak?"
+          <input onChange={handleTitleChange}
+            placeholder="Post title"
+            className="shareInput"
+          />
+          <input onChange={handleInputChange}
+            placeholder="What's in your mind?"
             className="shareInput"
           />
         </div>
@@ -32,7 +73,7 @@ export default function Share() {
                     <span className="shareOptionText">Feelings</span>
                 </div>
             </div>
-            <button className="shareButton">Share</button>
+            <button onClick={submitPost} className="shareButton">Post</button>
         </div>
       </div>
     </div>

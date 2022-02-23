@@ -43,7 +43,7 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Labebook</h3>
+          <h3 className="loginLogo">Labeddit</h3>
           <span className="loginDesc">
             Connect with friends and the world around you on Labebook.
           </span>
@@ -55,7 +55,7 @@ export default function Register() {
             <p>Password must have at least 8 caracters</p>
             <input onChange={handlePassword} placeholder="Password" className="loginInput" />
             <button onClick={submitSignup} className="loginButton">Sign Up</button>
-            <Link style={{textDecoration: "none", alignItems: "center", justifyContent: "center"}} className="loginRegisterButton" to="/login">
+            <Link style={{textDecoration: "none", alignItems: "center", justifyContent: "center"}} className="loginRegisterButton" to="/">
             Log into account
 
             </Link>

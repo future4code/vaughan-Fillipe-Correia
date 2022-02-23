@@ -10,7 +10,7 @@ export default function Login() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      navigate("/");
+      navigate("/home");
     }
   }, []);
 
@@ -30,7 +30,7 @@ export default function Login() {
   axios.post("https://labeddit.herokuapp.com/users/login", body)
   .then(res => {
     localStorage.setItem("token", res.data.token);
-    window.location.href = "/";
+    window.location.href = "/home";
   })
   .catch(err => {
     console.log(err);
@@ -42,7 +42,7 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Labebook</h3>
+          <h3 className="loginLogo">Labeddit</h3>
           <span className="loginDesc">
             Connect with friends and the world around you on Labebook
           </span>

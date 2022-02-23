@@ -24,7 +24,7 @@
 .loginLogo {
   font-size: 50px;
   font-weight: 800;
-  color: #1775ee;
+  color: orangered;
   margin-bottom: 10px;
 }
 
@@ -44,7 +44,7 @@
 
 .loginBox > p{
     font-size: 18px;
-    color: #1775ee;
+    color: orangered;
 }
 
 .loginInput{
