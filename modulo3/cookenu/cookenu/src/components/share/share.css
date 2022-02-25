@@ -35,6 +35,7 @@
 
 .shareInput:focus {
   outline: none;
+  border: 2px solid orangered;
 }
 
 .shareHr {
@@ -70,6 +71,7 @@
 }
 
 .shareButton{
+    width: 100px;
     border: none;
     padding: 7px;
     border-radius: 5px;

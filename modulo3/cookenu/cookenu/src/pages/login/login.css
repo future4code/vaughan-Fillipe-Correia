@@ -25,7 +25,7 @@
 .loginLogo {
   font-size: 50px;
   font-weight: 800;
-  color: #1775ee;
+  color: orangered;
   margin-bottom: 10px;
 }
 
@@ -41,6 +41,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.loginBox h2{
+  color: orangered;
 }
 
 .loginInput{

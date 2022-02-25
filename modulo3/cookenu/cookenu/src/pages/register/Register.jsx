@@ -2,12 +2,14 @@ import "./register.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { CircularProgress } from "@material-ui/core";
 
 export default function Register() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -22,6 +24,7 @@ export default function Register() {
   };
 
   const submitSignup = () => {
+    setLoading(true);
     const body = {
       username: user,
       email: email,
@@ -29,11 +32,11 @@ export default function Register() {
   }
   axios.post("https://labeddit.herokuapp.com/users/signup", body)
   .then(res => {
-    console.log(res);
-    console.log(res.data);
+    setLoading(false);
     alert("You have successfully registered!");
   })
   .catch(err => {
+    setLoading(false);
     console.log(err);
   })
   }
@@ -50,11 +53,12 @@ export default function Register() {
         </div>
         <div className="loginRight">
           <div className="loginBox">
+            <h2>Sign up</h2>
             <input onChange={handleUser} placeholder="Username" className="loginInput" />
             <input onChange={handleEmail} placeholder="Email" className="loginInput" />
             <p>Password must have at least 8 caracters</p>
             <input onChange={handlePassword} placeholder="Password" className="loginInput" />
-            <button onClick={submitSignup} className="loginButton">Sign Up</button>
+            <button onClick={submitSignup} className="loginButton">{loading ? <CircularProgress /> : <p>Sign up</p>}</button>
             <Link style={{textDecoration: "none", alignItems: "center", justifyContent: "center"}} className="loginRegisterButton" to="/">
             Log into account
 

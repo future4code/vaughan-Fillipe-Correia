@@ -47,6 +47,10 @@
     color: orangered;
 }
 
+.loginBox h2{
+  color: orangered;
+}
+
 .loginInput{
     height: 50px;
     border-radius: 10px;

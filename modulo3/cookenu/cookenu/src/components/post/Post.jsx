@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Post({ post }) {
   const [posts, setPosts] = useState([]);
   const classes = useStyles();
+  const [loading, setLoading] = useState(false);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     getPosts();
@@ -38,24 +40,45 @@ export default function Post({ post }) {
       direction: +1,
     };
     axios
-      .post(
-        `https://labeddit.herokuapp.com/posts/${postIdVote}/votes`,body,
-        {
-          headers: {
-            Authorization: token,
-          }
+      .post(`https://labeddit.herokuapp.com/posts/${postIdVote}/votes`, body, {
+        headers: {
+          Authorization: token,
         },
-      )
+      })
       .then((res) => {
-        alert("You upvoted this post");
         getPosts();
       })
       .catch((err) => {
-        console.log("ERRO DO CREATE POST:",err.response);
+        console.log("ERRO DO CREATE POST:", err.response);
       });
   };
-      
 
+  const handleComment = (event) => {
+    setComment(event.target.value);
+  };
+
+  const CreateComment = (postIdForThisComment) => {
+    const token = localStorage.getItem("token");
+    const body = {
+      body: comment,
+    };
+    axios
+      .post(
+        `https://labeddit.herokuapp.com/posts/${postIdForThisComment}/comments`,
+        body,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((res) => {
+        getPosts();
+      })
+      .catch((err) => {
+        console.log("ERRO DO CREATE COMMENT:", err.response);
+      });
+  };
 
   const ChangePostVote = (postIdVote) => {
     const token = localStorage.getItem("token");
@@ -63,17 +86,12 @@ export default function Post({ post }) {
       direction: -1,
     };
     axios
-      .put(
-        `https://labeddit.herokuapp.com/posts/${postIdVote}/votes`,body,
-        {
-          headers: {
-            Authorization: token,
-          }
+      .put(`https://labeddit.herokuapp.com/posts/${postIdVote}/votes`, body, {
+        headers: {
+          Authorization: token,
         },
-        
-      )
+      })
       .then((res) => {
-        alert("You downvoted this post");
         getPosts();
       })
       .catch((err) => {
@@ -82,6 +100,7 @@ export default function Post({ post }) {
   };
 
   const getPosts = () => {
+    setLoading(true);
     const token = localStorage.getItem("token");
     axios
       .get("https://labeddit.herokuapp.com/posts", {
@@ -90,34 +109,59 @@ export default function Post({ post }) {
         },
       })
       .then((res) => {
+        setLoading(false);
         setPosts(res.data);
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       });
   };
 
-  return (
-    <div className="post">
-      {posts.map((postmap) => (
+  const showYourVote = (uservote) => {
+    if (uservote === 1) {
+      return <div className="upvotedText">You upvoted this post</div>;
+    } else if (uservote === -1) {
+      return <div className="downvotedText">You downvoted this post</div>;
+    } else {
+      return "You didn't vote this post";
+    }
+  };
+
+  const formatDateToLocalDate = (date) => {
+    const dateUTC = new Date(date);
+    return dateUTC.toLocaleDateString();
+  };
+
+  const formatDateToLocalTime = (date) => {
+    const dateUTC = new Date(date);
+    return dateUTC.toLocaleTimeString();
+  };
+
+  const mapFunction = () => {
+    const map = posts.map((postmap) => {
+      return (
         <div key={postmap.id} className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
               <img className="postProfileImg" src={reddit} alt="" />
               <span className="postUsername">{postmap.username}</span>
-              <span className="postDate">Posted at: {postmap.createdAt}</span>
+              {/* convert date to UTC */}
+              <span className="postDate">
+                Posted: {formatDateToLocalDate(postmap.createdAt)} at:{" "}
+                {formatDateToLocalTime(postmap.createdAt)}
+              </span>
             </div>
             <div className="postTopRight">
               <MoreVert />
             </div>
           </div>
           <div className="postCenter">
-          <span className="postTitle">{postmap.title}</span>
+            <span className="postTitle">{postmap.title}</span>
             <span className="postText">{postmap.body}</span>
           </div>
           <div className="postBottom">
             <div className="postBottomLeft">
-
               <img
                 className="likeIcon"
                 src={arrowup}
@@ -131,8 +175,24 @@ export default function Post({ post }) {
                 alt="arrow down vote"
               />
               <span className="postLikeCounter">Votes: {postmap.voteSum}</span>
-              <span className="postLikeCounter">You voted: {postmap.userVote}</span>
+              <span className="postLikeCounter">
+                {showYourVote(postmap.userVote)}
+              </span>
             </div>
+          </div>
+          <div className="commentContainer">
+            <input
+              onChange={handleComment}
+              className="commentInput"
+              type="text"
+              placeholder="Add a comment..."
+            />
+            <button
+              onClick={() => CreateComment(postmap.id)}
+              className="commentButton"
+            >
+              Comment
+            </button>
           </div>
           <div className="postBottomRight">
             <Accordion>
@@ -142,7 +202,7 @@ export default function Post({ post }) {
                 id="panel1a-header"
               >
                 <Typography className={classes.heading}>
-                  {postmap.commentCount} comments
+                  {postmap.commentCount} Show comments
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
@@ -155,7 +215,22 @@ export default function Post({ post }) {
 
           <hr className="hr"></hr>
         </div>
-      ))}
+      );
+    });
+
+    return map;
+  };
+
+  return (
+    <div className="post">
+      {loading ? (
+        <div className="loading">
+          <CircularProgress style={{ color: "orangered" }} size="20em" />
+          <h1>Loading...</h1>
+        </div>
+      ) : (
+        <div>{mapFunction()}</div>
+      )}
     </div>
   );
 }

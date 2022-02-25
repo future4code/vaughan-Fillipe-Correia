@@ -1,5 +1,11 @@
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+const LogOut = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/";
+};
 
 export default function Topbar() {
   return (
@@ -17,9 +23,10 @@ export default function Topbar() {
         </div>
       </div>
       <div className="topbarRight">
-        <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Timeline</span>
+        <div onClick={LogOut} className="topbarLinks">
+          <span>Logout</span>
+          <ExitToAppIcon />
+          
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">

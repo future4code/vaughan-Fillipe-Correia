@@ -2,10 +2,12 @@ import "./share.css";
 import {PermMedia, Label,Room, EmojiEmotions} from "@material-ui/icons"
 import { useState } from "react";
 import axios from "axios";
+import { CircularProgress } from "@material-ui/core";
 
 export default function Share() {
 const [postText, setPostText] = useState("");
 const [postTitle, setPostTitle] = useState("");
+const [loading, setLoading] = useState(false);
 
 
   const handleInputChange = (e) => {
@@ -16,7 +18,26 @@ const [postTitle, setPostTitle] = useState("");
     setPostTitle(e.target.value);
   };
 
+  const getPosts = () => {
+    setLoading(true);
+    const token = localStorage.getItem("token");
+    axios
+      .get("https://labeddit.herokuapp.com/posts?page=1&size=5", {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
+
   const submitPost = (e) => {
+    setLoading(true);
     const token = localStorage.getItem("token");
     const body = {
       title: postTitle,
@@ -31,13 +52,14 @@ const [postTitle, setPostTitle] = useState("");
         },
       })
       .then((res) => {
-        alert("Post created");
+        setLoading(false);
+        getPosts();
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       });
   };
-
 
   return (
     <div className="share">
@@ -73,7 +95,7 @@ const [postTitle, setPostTitle] = useState("");
                     <span className="shareOptionText">Feelings</span>
                 </div>
             </div>
-            <button onClick={submitPost} className="shareButton">Post</button>
+            <button onClick={submitPost} className="shareButton">{loading ? <CircularProgress style={{ color: "white" }} size="1em" /> : <p>Post</p>}</button>
         </div>
       </div>
     </div>
