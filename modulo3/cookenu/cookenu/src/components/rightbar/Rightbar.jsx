@@ -12,7 +12,9 @@ export default function Rightbar({ profile }) {
             <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
           </span>
         </div>
-        <img className="rightbarAd" src="assets/ad.png" alt="" />
+        <a href="https://www.labenu.com.br/" className="labelink" target="blank">
+        <img className="rightbarAd" src="assets/ad2.jpg" alt="ad labenu" />
+        </a>
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
           {Users.map((u) => (

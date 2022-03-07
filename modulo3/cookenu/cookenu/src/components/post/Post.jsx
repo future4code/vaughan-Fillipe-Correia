@@ -202,7 +202,7 @@ export default function Post({ post }) {
                 id="panel1a-header"
               >
                 <Typography className={classes.heading}>
-                  {postmap.commentCount} Show comments
+                  {postmap.commentCount} Comments
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>

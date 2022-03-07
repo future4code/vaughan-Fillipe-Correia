@@ -1,6 +1,7 @@
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useState } from "react";
 
 const LogOut = () => {
   localStorage.removeItem("token");
@@ -8,6 +9,12 @@ const LogOut = () => {
 };
 
 export default function Topbar() {
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -19,6 +26,8 @@ export default function Topbar() {
           <input
             placeholder="Search for friend, post or video"
             className="searchInput"
+            onChange={handleSearch}
+            value={search}
           />
         </div>
       </div>
@@ -42,7 +51,7 @@ export default function Topbar() {
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
-        <img src="/assets/person/1.jpeg" alt="" className="topbarImg"/>
+        <img src="/assets/person/1.png" alt="" className="topbarImg"/>
       </div>
     </div>
   );

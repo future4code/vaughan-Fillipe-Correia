@@ -65,7 +65,7 @@ const [loading, setLoading] = useState(false);
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img className="shareProfileImg" src="/assets/person/1.jpeg" alt="" />
+          <img className="shareProfileImg" src="/assets/person/1.png" alt="" />
           <input onChange={handleTitleChange}
             placeholder="Post title"
             className="shareInput"
