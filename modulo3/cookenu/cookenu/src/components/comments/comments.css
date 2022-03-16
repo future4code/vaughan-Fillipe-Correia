@@ -1,0 +1,61 @@
+.commentCard{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+    background-color: #e2dede;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.commentCardHeader{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.votearrow{
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.upvotedText{
+    color: green;
+}
+
+.downvotedText{
+    color: red;
+}
+
+.votearrow:hover{
+    background-color: grey;
+}
+
+.commentCardBody{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.voteContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.loading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+  }
