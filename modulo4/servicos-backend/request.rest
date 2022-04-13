@@ -1,0 +1,9 @@
+# Endpoint to get the address based on the zipcode
+GET http://localhost:3003/cep/55010540
+Content-Type: application/json
+
+###
+
+GET http://localhost:3003/cep/55010540?numero=201&complemento=esquina
+Content-Type: application/json
+
