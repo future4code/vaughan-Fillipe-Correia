@@ -25,6 +25,3 @@ Projeto de backend com o objetivo de elaborar um sistema de cadastro de usuário
 ## Documentação postman:
 
 ### https://documenter.getpostman.com/view/19297915/Uyr5nJsR
-
-
-
