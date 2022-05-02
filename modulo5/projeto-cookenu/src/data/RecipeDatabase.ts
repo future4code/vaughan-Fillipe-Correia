@@ -31,4 +31,29 @@ export class RecipeDatabase extends BaseDatabase {
     }
   }
 
+  public async editRecipe(recipe: Recipe): Promise<void> {
+    try {
+      await BaseDatabase.connection("receitas_cookenu")
+        .update({
+          title: recipe.getTitle(),
+          ingredients: recipe.getIngredients(),
+          description: recipe.getDescription(),
+          image_url: recipe.getImage_url(),
+        })
+        .where({ id: recipe.getId() });
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
+
+  public async deleteRecipe(id: string): Promise<void> {
+    try {
+      await BaseDatabase.connection("receitas_cookenu")
+        .delete()
+        .where({ id: id });
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
+
 }

@@ -66,19 +66,80 @@ export class UserDatabase extends BaseDatabase {
         }
     }
 
-    public async getFollowersRecipes(userId: string): Promise<any> {
+    public async checkIfAlredyFollowing(followerId: string, followedId: string): Promise<boolean> {
         try {
-            const followers = await BaseDatabase.connection("followers")
-                .select("*")
-                .where({ followed_id: userId });
+            const result = await BaseDatabase.connection("followers")
+                .where({
+                    follower_id: followerId,
+                    followed_id: followedId,
+                })
+                .select("*");
 
-            const recipes = await BaseDatabase.connection("receitas_cookenu")
-                .select("*")
-                .whereIn("id", followers.map((follower) => follower.follower_id));
-                
+            return result.length > 0;
         } catch (error: any) {
             throw new Error(error.sqlMessage || error.message);
         }
     }
 
+    public async getFollowersRecipes (userId: string): Promise<any> {
+        try {
+            const followers = await BaseDatabase.connection("followers")
+                .select("*")
+                .where({
+                    follower_id: userId,
+                });
+
+            const recipes = await BaseDatabase.connection("receitas_cookenu")
+                .select("*")
+                .whereIn("user_id", followers.map((follower: any) => follower.followed_id));
+
+            return recipes;
+        } catch (error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
+
+    public async deleteUserAndRelations(userId: string): Promise<void> {
+        try {
+            await BaseDatabase.connection("followers")
+                .where({
+                    follower_id: userId,
+                })
+                .del();
+
+            await BaseDatabase.connection("followers")
+                .where({
+                    followed_id: userId,
+                })
+                .del();
+
+            await BaseDatabase.connection("receitas_cookenu")
+                .where({
+                    user_id: userId,
+                })
+                .del();
+
+            await BaseDatabase.connection("users_cookenu")
+                .where({
+                    id: userId,
+                })
+                .del();
+        } catch (error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
+
+    public async changePassword(userId: string, newPassword: string): Promise<void> {
+        try {
+            await BaseDatabase.connection("users_cookenu")
+                .where({
+                    id: userId,
+                })
+                .update({
+                    password: newPassword,
+                });
+        } catch (error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }

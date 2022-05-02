@@ -16,7 +16,7 @@ export class Authenticator {
                 role: input.role,
             },
             process.env.JWT_KEY as string,
-            { expiresIn: "10m" }
+            { expiresIn: "50m" }
         );
 
         return token;
