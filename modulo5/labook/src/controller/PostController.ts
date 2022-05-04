@@ -28,4 +28,19 @@ export default class PostController {
             res.status(500).send("Erro no signup")
         }
     }
+
+    public getPostById = async (req: Request, res: Response) => {
+        try {
+            const post = await this.postBusiness.getPostById(req.params.id)
+            res.status(200).send({
+                message: "Post encontrado com sucesso", post
+            })
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(400).send(error.message)
+            }
+            res.status(500).send("Erro no signup")
+        }
+
+    }
 }

@@ -72,4 +72,64 @@ export default class UserBusiness{
         //retornar o token
         return token
     }
+
+    follow = async (followed_id:string, token:string) =>{
+        //validacao
+        if(!followed_id){
+            throw new Error("Campos inválidos")
+        }
+
+        if(!token){
+            throw new Error("Token inválido")
+        }
+
+        // pegar informação do usuario pelo token
+        const user = this.authenticator.getTokenData(token)
+        if(!user){
+            throw new Error("Usuário não autenticado")
+        }
+        
+        //conferir se o usuario a ser seguido existe
+        const follower = await this.userData.findById(followed_id)
+        if(!follower){
+            throw new Error("Usuário não cadastrado")
+        }
+
+        //seguir o usuario
+        await this.userData.follow(followed_id, user.id)
+
+       
+        return "Seguindo"
+    
+    }
+
+    unfollow = async (followed_id:string, token:string) =>{
+        //validacao
+        if(!followed_id){
+            throw new Error("Campos inválidos")
+        }
+
+        if(!token){
+            throw new Error("Token inválido")
+        }
+
+        // pegar informação do usuario pelo token
+        const user = this.authenticator.getTokenData(token)
+        if(!user){
+            throw new Error("Usuário não autenticado")
+        }
+
+        //conferir se o usuario a ser seguido existe
+        const follower = await this.userData.findById(followed_id)
+        if(!follower){
+            throw new Error("Usuário não cadastrado")
+        }
+
+        //parar de seguir o usuario
+        await this.userData.unfollow(followed_id, user.id)
+
+        return "Deixou de seguir"
+
+    }
+
 }

@@ -1,10 +1,12 @@
 import User from "../model/User"
 import { FindByEmailResponse } from "../types/findByEmailResponse"
 import { FindByIdResponse } from "../types/findByIdResponse"
+import { FindFollowersResponse } from "../types/findFollowersResponse"
 import { BaseDatabase } from "./BaseDatabase"
 
 export default class UserData extends BaseDatabase {
     protected TABLE_NAME = "User_Labook"
+    protected FOLLOWERS_TABLE_NAME = "Labook_followers"
 
     insert = async (user: User) => {
         try {
@@ -53,5 +55,45 @@ export default class UserData extends BaseDatabase {
             }
         }
     }
+
+    follow = async (followed_id: string, follower_id: string) => {
+        try {
+            await this
+                .connection(this.FOLLOWERS_TABLE_NAME)
+                .insert({ followed_id, follower_id })
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message)
+            }
+            throw new Error("Erro do banco !")
+        }
+    }
+
+    unfollow = async (followed_id: string, follower_id: string) => {
+        try {
+            await this
+                .connection(this.FOLLOWERS_TABLE_NAME)
+                .where({ followed_id, follower_id })
+                .del()
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message)
+            }
+            throw new Error("Erro do banco !")
+        }
+    }
+
+    // getFollowers = async (id: string) => {
+    //     try {
+    //         const queryResult: FindFollowersResponse = await this
+    //             .connection(this.FOLLOWERS_TABLE_NAME)
+    //             .select("follower_id")
+    //             .where({ followed_id: id })
+
+    //         return queryResult
+    //     } catch (error) {
+    //         if (error instanceof Error) {
+    //             throw new Error(error.message)
+
 
 }

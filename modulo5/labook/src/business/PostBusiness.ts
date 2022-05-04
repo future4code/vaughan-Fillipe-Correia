@@ -47,4 +47,12 @@ export default class PostBusiness{
         //retornar o post
         return post
     }
+
+    getPostById = async (id:string) =>{
+        const post = await this.postData.findById(id)
+        if(!post){
+            throw new Error("Post não encontrado")
+        }
+        return post
+    }
 }

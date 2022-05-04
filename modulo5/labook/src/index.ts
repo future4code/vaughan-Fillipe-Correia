@@ -34,3 +34,7 @@ app.post("/user/signup", userController.signup)
 app.post("/user/login", userController.login)
 
 app.post("/post", postController.createPost)
+app.get("/post/:id", postController.getPostById)
+
+app.post("/follow", userController.follow)
+app.post("/unfollow", userController.unfollow)
