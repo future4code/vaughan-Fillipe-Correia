@@ -1,6 +1,6 @@
 import { POST_TYPE } from "../model/Post"
 
-export type FindPostByIdResponse = {
+export type FindPostResponse = {
     id: string
     title: string,
     body: string,

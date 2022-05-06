@@ -1,5 +1,4 @@
 export type FindFollowersResponse = {
-    id: string
-    name: string
-    email: string
+    followed_id: string
+    follower_id: string
 }[]

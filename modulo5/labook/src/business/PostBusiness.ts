@@ -55,4 +55,38 @@ export default class PostBusiness{
         }
         return post
     }
+
+    getFeed = async (token:string) =>{
+        const user = this.authenticator.getTokenData(token)
+        if(!user){
+            throw new Error("Usuário não encontrado")
+        }
+
+        const feed = await this.postData.getFeed(user.id)
+
+        return feed
+    }
+
+    getFeedByType = async (token:string, type:string) =>{
+        const user = this.authenticator.getTokenData(token)
+        if(!user){
+            throw new Error("Usuário não encontrado")
+        }
+
+        const feed = await this.postData.getFeedByType(user.id, type)
+
+        return feed
+    }
+
+    getFeedByPage = async (token:string, page:number) =>{
+        const user = this.authenticator.getTokenData(token)
+        if(!user){
+            throw new Error("Usuário não encontrado")
+        }
+
+        const feed = await this.postData.getFeedByPage(user.id, page)
+
+        return feed
+    }
+
 }

@@ -83,17 +83,19 @@ export default class UserData extends BaseDatabase {
         }
     }
 
-    // getFollowers = async (id: string) => {
-    //     try {
-    //         const queryResult: FindFollowersResponse = await this
-    //             .connection(this.FOLLOWERS_TABLE_NAME)
-    //             .select("follower_id")
-    //             .where({ followed_id: id })
+    isAlreadyFollowed = async (followed_id: string, follower_id: string) => {
+        try {
+            const queryResult: FindFollowersResponse = await this
+                .connection(this.FOLLOWERS_TABLE_NAME)
+                .select()
+                .where({ followed_id, follower_id })
 
-    //         return queryResult
-    //     } catch (error) {
-    //         if (error instanceof Error) {
-    //             throw new Error(error.message)
-
-
+            return queryResult.length > 0
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message)
+            }
+            throw new Error("Erro do banco !")
+        }
+    }
 }

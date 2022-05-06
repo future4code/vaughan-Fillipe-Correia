@@ -38,3 +38,8 @@ app.get("/post/:id", postController.getPostById)
 
 app.post("/follow", userController.follow)
 app.post("/unfollow", userController.unfollow)
+
+app.get("/feed", postController.getFeed)
+app.get("/feed/:type", postController.getFeedByType)
+
+app.get("/page/:page", postController.getFeedByPage)

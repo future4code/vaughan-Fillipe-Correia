@@ -25,7 +25,7 @@ export default class PostController {
             if (error instanceof Error) {
                 return res.status(400).send(error.message)
             }
-            res.status(500).send("Erro no signup")
+            res.status(500).send("Erro no criação de post")
         }
     }
 
@@ -39,8 +39,54 @@ export default class PostController {
             if (error instanceof Error) {
                 return res.status(400).send(error.message)
             }
-            res.status(500).send("Erro no signup")
+            res.status(500).send("Erro ao encontrar post")
         }
 
+    }
+
+    public getFeed = async (req: Request, res: Response) => {
+        try {
+            const token = req.headers.authorization as string;
+            const feed = await this.postBusiness.getFeed(token)
+            res.status(200).send({
+                message: "Feed encontrado com sucesso", feed
+            })
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(400).send(error.message)
+            }
+            res.status(500).send("Erro ao encontrar feed")
+        }
+    }
+
+    public getFeedByType = async (req: Request, res: Response) => {
+        try {
+            const token = req.headers.authorization as string;
+            const feed = await this.postBusiness.getFeedByType(token, req.params.type)
+            res.status(200).send({
+                message: "Feed encontrado com sucesso", feed
+            })
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(400).send(error.message)
+            }
+            res.status(500).send("Erro ao encontrar feed")
+        }
+    }
+
+    public getFeedByPage = async (req: Request, res: Response) => {
+        try {
+            const token = req.headers.authorization as string;
+            const page = req.params.page
+            const feed = await this.postBusiness.getFeedByPage(token, parseInt(page))
+            res.status(200).send({
+                message: "Feed encontrado com sucesso", feed
+            })
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(400).send(error.message)
+            }
+            res.status(500).send("Erro ao encontrar feed")
+        }
     }
 }
