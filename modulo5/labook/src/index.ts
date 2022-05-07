@@ -30,16 +30,18 @@ const postController = new PostController(
     postBusiness
 );
 
+// endpoints for users
 app.post("/user/signup", userController.signup)
 app.post("/user/login", userController.login)
-
-app.post("/post", postController.createPost)
-app.get("/post/:id", postController.getPostById)
-
 app.post("/follow", userController.follow)
 app.post("/unfollow", userController.unfollow)
 
+// endpoints for posts
+app.post("/post", postController.createPost)
+app.get("/post/:id", postController.getPostById)
 app.get("/feed", postController.getFeed)
 app.get("/feed/:type", postController.getFeedByType)
-
 app.get("/page/:page", postController.getFeedByPage)
+app.post("/post/like/:id", postController.likePost)
+app.post("/post/unlike/:id", postController.unlikePost)
+app.post("/post/comment/:id", postController.commentPost)

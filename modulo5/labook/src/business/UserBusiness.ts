@@ -93,7 +93,10 @@ export default class UserBusiness {
     }
 
     // conferir se o usuario ja segue o usuario a ser seguido
-    const isFollowing = await this.userData.isAlreadyFollowed(followed_id, user.id);
+    const isFollowing = await this.userData.isAlreadyFollowed(
+      followed_id,
+      user.id
+    );
     if (isFollowing) {
       throw new Error("Usuário já seguido");
     }
@@ -127,7 +130,10 @@ export default class UserBusiness {
     }
 
     // conferir se os usuários se seguem entre si
-    const isFollowing = await this.userData.isAlreadyFollowed(followed_id, user.id);
+    const isFollowing = await this.userData.isAlreadyFollowed(
+      followed_id,
+      user.id
+    );
     if (!isFollowing) {
       throw new Error("O usuário não segue o outro");
     }
