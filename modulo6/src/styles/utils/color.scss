@@ -1,0 +1,17 @@
+.color-paragraph {
+  color: var(--paragraph) !important;
+}
+
+.color-primary {
+  color: var(--primary-color) !important;
+
+  &.color-hover {
+    &:hover {
+      color: var(--primary-color-hover) !important;
+    }
+  }
+}
+
+.color-light {
+  color: var(--background-light) !important;
+}
